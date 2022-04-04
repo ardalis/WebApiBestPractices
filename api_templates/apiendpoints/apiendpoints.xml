@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>apiendpoints</name>
+    </assembly>
+    <members>
+        <member name="M:apiendpoints.Endpoints.Authors.List.HandleAsync(System.Threading.CancellationToken)">
+            <summary>
+            List all Authors
+            </summary>
+        </member>
+    </members>
+</doc>

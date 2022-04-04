@@ -1,4 +1,6 @@
 ﻿using Ardalis.ApiEndpoints;
+using AutoMapper;
+using BackendData;
 using Microsoft.AspNetCore.Mvc;
 
 namespace apiendpoints.Endpoints.Authors;
@@ -7,15 +9,15 @@ public class List : EndpointBaseAsync
 		.WithoutRequest
 		.WithResult<IEnumerable<AuthorListResult>>
 {
-	//private readonly IAsyncRepository<Author> repository;
-	//private readonly IMapper mapper;
+	private readonly IAsyncRepository<Author> _repository;
+	private readonly IMapper _mapper;
 
-	public List()
-	//IAsyncRepository<Author> repository,
-	//IMapper mapper)
+	public List(
+		IAsyncRepository<Author> repository,
+		IMapper mapper)
 	{
-		//this.repository = repository;
-		//this.mapper = mapper;
+		_repository = repository;
+		_mapper = mapper;
 	}
 
 	/// <summary>
@@ -24,6 +26,9 @@ public class List : EndpointBaseAsync
 	[HttpGet("api/[namespace]")]
 	public override async Task<IEnumerable<AuthorListResult>> HandleAsync(CancellationToken cancellationToken = default)
 	{
-		return new List<AuthorListResult>();
+		var result = (await _repository.ListAllAsync(cancellationToken))
+				.Select(i => _mapper.Map<AuthorListResult>(i));
+
+		return result;
 	}
 }

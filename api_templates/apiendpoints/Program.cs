@@ -1,9 +1,14 @@
-using apiendpoints.Endpoints.Authors;
+﻿using apiendpoints.Endpoints.Authors;
 using BackendData;
 using BackendData.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+		options.UseSqlite("Data Source=database.sqlite")); // will be created in web project root
+
 builder.Services.AddControllers(options => options.UseNamespaceRouteToken());
 builder.Services.AddAutoMapper(typeof(List));
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
@@ -45,4 +50,9 @@ app.UseAuthorization();
 
 app.UseEndpoints(app => app.MapControllers());
 
+await using var scope = app.Services.CreateAsyncScope();
+using var db = scope.ServiceProvider.GetService<AppDbContext>();
+await db!.Database.MigrateAsync();
+
 app.Run();
+

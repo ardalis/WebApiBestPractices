@@ -5,13 +5,24 @@ namespace BackendData.DataAccess;
 
 public class AppDbContext : DbContext
 {
+	public AppDbContext()
+	{ }
+
   public AppDbContext(DbContextOptions options) : base(options)
   {
   }
 
   public DbSet<Author> Authors { get; set; } = null!;
 
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
+	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+	{
+		if (!optionsBuilder.IsConfigured)
+		{
+			optionsBuilder.UseSqlite("Filename=database.sqlite");
+		}
+	}
+
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
     base.OnModelCreating(modelBuilder);
 

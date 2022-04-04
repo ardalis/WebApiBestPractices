@@ -8,12 +8,14 @@ public class AutoMapping : Profile
 {
 	public AutoMapping()
 	{
-		//CreateMap<CreateAuthorCommand, Author>();
-		//CreateMap<UpdateAuthorCommand, Author>();
+		CreateMap<CreateAuthorCommand, Author>();
+		CreateMap<Author, CreatedAuthorResult>();
 
-		//CreateMap<Author, CreateAuthorResult>();
-		//CreateMap<Author, UpdatedAuthorResult>();
+		CreateMap<UpdateAuthorCommand, Author>();
+		CreateMap<Author, UpdatedAuthorResult>();
+
 		CreateMap<Author, AuthorListResult>();
-		//CreateMap<Author, AuthorResult>();
+
+		CreateMap<Author, AuthorResult>();
 	}
 }

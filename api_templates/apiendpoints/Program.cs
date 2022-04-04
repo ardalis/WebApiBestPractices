@@ -1,13 +1,19 @@
 ﻿using apiendpoints.Endpoints.Authors;
 using BackendData;
 using BackendData.DataAccess;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=database.sqlite;Cache=Shared";
+var connection = new SqliteConnection(connectionString);
+connection.Open();
+
+//builder.Services.AddSqlite<AppDbContext>(connectionString);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-		options.UseSqlite("Data Source=database.sqlite")); // will be created in web project root
+		options.UseSqlite(connection)); // will be created in web project root
 
 builder.Services.AddControllers(options => options.UseNamespaceRouteToken());
 builder.Services.AddAutoMapper(typeof(List));
@@ -21,6 +27,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
+
+await EnsureDb(app.Services, app.Logger);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -56,3 +64,16 @@ await db!.Database.MigrateAsync();
 
 app.Run();
 
+async Task EnsureDb(IServiceProvider services, ILogger logger)
+{
+	using var db = services.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
+	if (db.Database.IsRelational())
+	{
+		logger.LogInformation("Ensuring database exists and is up to date at connection string '{connectionString}'", connectionString);
+		//await db.Database.EnsureCreatedAsync();
+		await db.Database.MigrateAsync();
+	}
+}
+
+// Make the implicit Program class public so test projects can access it
+public partial class Program { }

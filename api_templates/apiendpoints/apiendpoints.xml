@@ -4,9 +4,29 @@
         <name>apiendpoints</name>
     </assembly>
     <members>
+        <member name="M:apiendpoints.Endpoints.Authors.Create.HandleAsync(apiendpoints.Endpoints.Authors.CreateAuthorCommand,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new Author
+            </summary>
+        </member>
+        <member name="M:apiendpoints.Endpoints.Authors.Delete.HandleAsync(apiendpoints.Endpoints.Authors.DeleteAuthorRequest,System.Threading.CancellationToken)">
+            <summary>
+            Deletes an Author
+            </summary>
+        </member>
+        <member name="M:apiendpoints.Endpoints.Authors.Get.HandleAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Get a specific Author
+            </summary>
+        </member>
         <member name="M:apiendpoints.Endpoints.Authors.List.HandleAsync(System.Threading.CancellationToken)">
             <summary>
             List all Authors
+            </summary>
+        </member>
+        <member name="M:apiendpoints.Endpoints.Authors.Update.HandleAsync(apiendpoints.Endpoints.Authors.UpdateAuthorCommand,System.Threading.CancellationToken)">
+            <summary>
+            Updates an existing Author
             </summary>
         </member>
     </members>

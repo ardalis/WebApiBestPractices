@@ -14,13 +14,13 @@ public class AppDbContext : DbContext
 
   public DbSet<Author> Authors { get; set; } = null!;
 
-	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-	{
-		if (!optionsBuilder.IsConfigured)
-		{
-			optionsBuilder.UseSqlite("Filename=database.sqlite");
-		}
-	}
+	//protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+	//{
+	//	if (!optionsBuilder.IsConfigured)
+	//	{
+	//		optionsBuilder.UseSqlite(":memory");
+	//	}
+	//}
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
   {

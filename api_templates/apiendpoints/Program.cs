@@ -21,9 +21,9 @@ builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
 builder.Services.AddSwaggerGen(c =>
 {
-  c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Endpoints", Version = "v1" });
-  c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "apiendpoints.xml"));
-  c.UseApiEndpoints();
+	c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Endpoints", Version = "v1" });
+	c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "apiendpoints.xml"));
+	c.UseApiEndpoints();
 });
 
 var app = builder.Build();
@@ -33,20 +33,20 @@ await EnsureDb(app.Services, app.Logger);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-  app.UseSwagger();
-  app.UseSwaggerUI(c =>
+	app.UseSwagger();
+	app.UseSwaggerUI(c =>
 	{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Endpoints");
-    c.RoutePrefix = "";
-  });
+		c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Endpoints");
+		c.RoutePrefix = "";
+	});
 }
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-  app.UseExceptionHandler("/Home/Error");
-  // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-  app.UseHsts();
+	app.UseExceptionHandler("/Home/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();

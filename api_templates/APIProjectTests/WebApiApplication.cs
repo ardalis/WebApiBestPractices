@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BackendData.DataAccess;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.Sqlite;
@@ -30,49 +31,35 @@ class WebApiApplication : WebApplicationFactory<Program>
 			loggingBuilder.Services.AddSingleton<ILoggerProvider>(serviceProvider => new XUnitLoggerProvider(_testOutputHelper));
 		});
 
-		//builder.ConfigureServices(services =>
-		//{
-		//	var descriptor = services.SingleOrDefault(
-		//			d => d.ServiceType ==
-		//					 typeof(DbContextOptions<AppDbContext>));
-
-		//	services.Remove(descriptor);
-
-		//	// Create a new service provider.
-		//	var serviceProvider = new ServiceCollection()
-		//			.AddEntityFrameworkSqlite()
-		//			.BuildServiceProvider();
-
-		//	// Add a database context (AppDbContext) using an in-memory database for testing.
-		//	services.AddDbContext<AppDbContext>(options =>
-		//	{
-		//		options.UseSqlite(this.SqliteConnection);
-		//		options.UseInternalServiceProvider(serviceProvider);
-		//	});
-
-		//	// Build the service provider.
-		//	var sp = services.BuildServiceProvider();
-
-		//	// Create a scope to obtain a reference to the database contexts
-		//	var scope = sp.CreateScope();
-		//	var scopedServices = scope.ServiceProvider;
-		//	var appDb = scopedServices.GetRequiredService<AppDbContext>();
-		//	appDb.Database.EnsureCreated();
-
-		//	//Context = appDb;
-		//});
-
-		//// Add mock/test services to the builder here
 		builder.ConfigureServices(services =>
 		{
-			services.AddScoped(sp =>
+			var descriptor = services.SingleOrDefault(
+					d => d.ServiceType ==
+							 typeof(DbContextOptions<AppDbContext>));
+
+			services.Remove(descriptor);
+
+			services.AddDbContext<AppDbContext>(options =>
 			{
-				// Replace SQLite with in-memory database for tests
-				return new DbContextOptionsBuilder<AppDbContext>()
-				.UseSqlite("DataSource=:memory:")
-				.UseApplicationServiceProvider(sp)
-				.Options;
+				options.UseInMemoryDatabase("InMemoryDbForTesting");
 			});
+
+			// Create a new service provider.
+			var serviceProvider = services.BuildServiceProvider();
+
+			using (var scope = serviceProvider.CreateScope())
+			using (var appContext = scope.ServiceProvider.GetRequiredService<AppDbContext>())
+			{
+				try
+				{
+					appContext.Database.EnsureCreated();
+				}
+				catch (Exception ex)
+				{
+					//Log errors or do anything you think it's needed
+					throw;
+				}
+			}
 		});
 
 		return base.CreateHost(builder);

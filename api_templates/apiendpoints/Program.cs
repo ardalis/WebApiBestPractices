@@ -60,7 +60,8 @@ app.UseEndpoints(app => app.MapControllers());
 
 await using var scope = app.Services.CreateAsyncScope();
 using var db = scope.ServiceProvider.GetService<AppDbContext>();
-await db!.Database.MigrateAsync();
+
+await EnsureDb(app.Services, app.Logger);
 
 app.Run();
 

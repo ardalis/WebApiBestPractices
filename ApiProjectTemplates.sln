@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apiendpoints", "api_templat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "controllers", "api_templates\controllers\controllers.csproj", "{598E8089-2F57-4E6A-B2E1-F5E594ECF887}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fastendpoints", "api_templates\fastendpoints\fastendpoints.csproj", "{9450CEC4-A630-4B51-A007-E7CF602E20C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastEndpointsAPI", "api_templates\fastendpoints\FastEndpointsAPI.csproj", "{9450CEC4-A630-4B51-A007-E7CF602E20C5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "minimal", "api_templates\minimal\minimal.csproj", "{2DCDBB44-38A9-4537-BDB2-6CAFA3A0D3AD}"
 EndProject

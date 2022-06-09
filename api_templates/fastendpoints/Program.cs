@@ -1,9 +1,21 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using BackendData;
+using BackendData.DataAccess;
+using FastEndpoints;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=database.sqlite;Cache=Shared";
+var connection = new SqliteConnection(connectionString);
+connection.Open();
 
 // Add services to the container.
+builder.Services.AddFastEndpoints();
+builder.Services.AddDbContext<AppDbContext>(options =>
+		options.UseSqlite(connection)); // will be created in web project root
+builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,7 +31,12 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseFastEndpoints();
 
-app.MapControllers();
+using (var serviceScope = app.Services.CreateScope())
+{
+	var context = serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
+	context.Database.EnsureCreated();
+}
 
 app.Run();

@@ -21,6 +21,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+await EnsureDb(app.Services, app.Logger);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -33,10 +35,14 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseFastEndpoints();
 
-using (var serviceScope = app.Services.CreateScope())
-{
-	var context = serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
-	context.Database.EnsureCreated();
-}
-
 app.Run();
+
+async Task EnsureDb(IServiceProvider services, ILogger logger)
+{
+	using var db = services.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
+	if (db.Database.IsRelational())
+	{
+		logger.LogInformation("Ensuring database exists and is up to date at connection string '{connectionString}'", connectionString);
+		await db.Database.MigrateAsync();
+	}
+}

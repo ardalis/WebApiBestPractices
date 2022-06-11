@@ -22,7 +22,7 @@ public class Get : EndpointBaseAsync
 	/// <summary>
 	/// Get a specific Author
 	/// </summary>
-	[HttpGet("api/[namespace]/{id}", Name = "[namespace]_[controller]")]
+	[HttpGet("[namespace]/{id}", Name = "[namespace]_[controller]")]
 	public override async Task<ActionResult<AuthorResult>> HandleAsync(int id, CancellationToken cancellationToken)
 	{
 		var author = await _repository.GetByIdAsync(id, cancellationToken);

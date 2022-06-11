@@ -1,4 +1,5 @@
-﻿using apiendpoints.Endpoints.Authors;
+﻿using apiendpoints;
+using apiendpoints.Endpoints.Authors;
 using BackendData;
 using BackendData.DataAccess;
 using Microsoft.Data.Sqlite;
@@ -10,12 +11,20 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 var connection = new SqliteConnection(connectionString);
 connection.Open();
 
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=database.sqlite;Cache=Shared";
+//builder.Services.AddSqlite<AppDbContext>(connectionString);
+
+
 //builder.Services.AddSqlite<AppDbContext>(connectionString);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 		options.UseSqlite(connection)); // will be created in web project root
 
-builder.Services.AddControllers(options => options.UseNamespaceRouteToken());
+builder.Services.AddControllers(options =>
+{
+	options.UseNamespaceRouteToken();
+	options.ModelBinderProviders.InsertBodyAndRouteBinding();
+});
 builder.Services.AddAutoMapper(typeof(List));
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
@@ -24,6 +33,7 @@ builder.Services.AddSwaggerGen(c =>
 	c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Endpoints", Version = "v1" });
 	c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "apiendpoints.xml"));
 	c.UseApiEndpoints();
+	c.OperationFilter<CustomFromBodyOperationFilter>();
 });
 
 var app = builder.Build();

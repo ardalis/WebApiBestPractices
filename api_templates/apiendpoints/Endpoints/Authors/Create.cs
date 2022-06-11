@@ -22,7 +22,7 @@ public class Create : EndpointBaseAsync
 	/// <summary>
 	/// Creates a new Author
 	/// </summary>
-	[HttpPost("api/[namespace]")]
+	[HttpPost("[namespace]")]
 	public override async Task<ActionResult> HandleAsync([FromBody] CreateAuthorCommand request, CancellationToken cancellationToken)
 	{
 		var author = new Author();

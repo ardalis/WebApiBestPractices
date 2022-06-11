@@ -23,7 +23,7 @@ public class List : EndpointBaseAsync
 	/// <summary>
 	/// List all Authors
 	/// </summary>
-	[HttpGet("api/[namespace]")]
+	[HttpGet("[namespace]")]
 	public override async Task<IEnumerable<AuthorListResult>> HandleAsync(CancellationToken cancellationToken = default)
 	{
 		var result = (await _repository.ListAllAsync(cancellationToken))

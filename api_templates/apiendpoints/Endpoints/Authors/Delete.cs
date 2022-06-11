@@ -18,7 +18,7 @@ public class Delete : EndpointBaseAsync
 	/// <summary>
 	/// Deletes an Author
 	/// </summary>
-	[HttpDelete("api/[namespace]/{id}")]
+	[HttpDelete("[namespace]/{id}")]
 	public override async Task<ActionResult> HandleAsync([FromRoute] DeleteAuthorRequest request, CancellationToken cancellationToken)
 	{
 		var author = await _repository.GetByIdAsync(request.Id, cancellationToken);

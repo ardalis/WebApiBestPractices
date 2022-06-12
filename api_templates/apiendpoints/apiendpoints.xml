@@ -24,6 +24,16 @@
             List all Authors
             </summary>
         </member>
+        <member name="T:apiendpoints.Endpoints.Authors.Patch">
+            <summary>
+            See: https://docs.microsoft.com/en-us/aspnet/core/web-api/jsonpatch?view=aspnetcore-6.0
+            </summary>
+        </member>
+        <member name="M:apiendpoints.Endpoints.Authors.Patch.HandleAsync(apiendpoints.Endpoints.Authors.PatchAuthorCommand,System.Threading.CancellationToken)">
+            <summary>
+            Updates an existing Author
+            </summary>
+        </member>
         <member name="M:apiendpoints.Endpoints.Authors.Update.HandleAsync(apiendpoints.Endpoints.Authors.UpdateAuthorCommand,System.Threading.CancellationToken)">
             <summary>
             Updates an existing Author

@@ -24,7 +24,8 @@ builder.Services.AddControllers(options =>
 {
 	options.UseNamespaceRouteToken();
 	options.ModelBinderProviders.InsertBodyAndRouteBinding();
-});
+})
+	.AddNewtonsoftJson(); // needed for JsonPatch support
 builder.Services.AddAutoMapper(typeof(List));
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
@@ -33,7 +34,8 @@ builder.Services.AddSwaggerGen(c =>
 	c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Endpoints", Version = "v1" });
 	c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "apiendpoints.xml"));
 	c.UseApiEndpoints();
-	c.OperationFilter<CustomFromBodyOperationFilter>();
+//	c.OperationFilter<CustomFromBodyOperationFilter>();
+	c.OperationFilter<BodyAndRouteOperationFilter>();
 });
 
 var app = builder.Build();

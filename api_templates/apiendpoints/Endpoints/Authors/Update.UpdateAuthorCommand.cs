@@ -6,6 +6,8 @@ namespace apiendpoints.Endpoints.Authors;
 public class UpdateAuthorCommand
 {
 	[Required] // From Route
+	[System.Text.Json.Serialization.JsonIgnore] // so it doesn't appear in body example schema in Swagger
+	// see: https://github.com/domaindrivendev/Swashbuckle.WebApi/issues/1230
 	public int Id { get; set; }
 
 	[Required]

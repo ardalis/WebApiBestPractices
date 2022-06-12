@@ -41,4 +41,12 @@ public class Patch : EndpointBaseAsync
 		var result = _mapper.Map<PatchedAuthorResult>(author);
 		return result;
 	}
+
+	/* Example:
+	{
+		"patchDocument": [
+		{ "op": "replace", "path": "/name", "value": "steve" },
+		]
+	}
+	*/
 }

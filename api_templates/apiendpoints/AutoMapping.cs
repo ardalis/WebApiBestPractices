@@ -20,8 +20,6 @@ public class AutoMapping : Profile
 
 		CreateMap<Author, AuthorListResult>();
 
-		CreateMap<Author, AuthorResult>();
-
 		CreateMap<AuthorDto, Author>().ReverseMap();
 		CreateMap<Author,PatchedAuthorResult>();
 	}

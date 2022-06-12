@@ -1,6 +1,6 @@
 ﻿namespace apiendpoints.Endpoints.Authors;
 
-public class AuthorResult
+public class AuthorDto
 {
 	public string Id { get; set; } = null!;
 	public string Name { get; set; } = null!;

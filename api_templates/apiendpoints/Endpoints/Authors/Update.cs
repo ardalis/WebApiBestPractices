@@ -1,4 +1,5 @@
 ﻿using Ardalis.ApiEndpoints;
+using Ardalis.RouteAndBodyModelBinding;
 using AutoMapper;
 using BackendData;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ public class Update : EndpointBaseAsync
 	/// Updates an existing Author
 	/// </summary>
 	[HttpPut("[namespace]/{id}")]
-	public override async Task<ActionResult<UpdatedAuthorResult>> HandleAsync([FromBodyAndRoute] UpdateAuthorCommand request,
+	public override async Task<ActionResult<UpdatedAuthorResult>> HandleAsync([FromRouteAndBody] UpdateAuthorCommand request,
 		CancellationToken cancellationToken)
 	{
 		var author = await _repository.GetByIdAsync(request.Id, cancellationToken);

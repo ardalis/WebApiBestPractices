@@ -1,5 +1,5 @@
-﻿using apiendpoints;
-using apiendpoints.Endpoints.Authors;
+﻿using apiendpoints.Endpoints.Authors;
+using Ardalis.RouteAndBodyModelBinding;
 using BackendData;
 using BackendData.DataAccess;
 using Microsoft.Data.Sqlite;
@@ -15,16 +15,14 @@ connection.Open();
 //builder.Services.AddSqlite<AppDbContext>(connectionString);
 
 
-//builder.Services.AddSqlite<AppDbContext>(connectionString);
-
 builder.Services.AddDbContext<AppDbContext>(options =>
 		options.UseSqlite(connection)); // will be created in web project root
 
 builder.Services.AddControllers(options =>
-{
-	options.UseNamespaceRouteToken();
-	options.ModelBinderProviders.InsertBodyAndRouteBinding();
-})
+	{
+		options.UseNamespaceRouteToken();
+		options.ModelBinderProviders.InsertRouteAndBodyBinding();
+	})
 	.AddNewtonsoftJson(); // needed for JsonPatch support
 builder.Services.AddAutoMapper(typeof(List));
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
@@ -34,8 +32,7 @@ builder.Services.AddSwaggerGen(c =>
 	c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Endpoints", Version = "v1" });
 	c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "apiendpoints.xml"));
 	c.UseApiEndpoints();
-//	c.OperationFilter<CustomFromBodyOperationFilter>();
-	c.OperationFilter<BodyAndRouteOperationFilter>();
+	c.OperationFilter<RouteAndBodyOperationFilter>();
 });
 
 var app = builder.Build();

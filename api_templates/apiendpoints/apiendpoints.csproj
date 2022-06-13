@@ -15,6 +15,7 @@
 	<ItemGroup>
 		<PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1" />
 		<PackageReference Include="Ardalis.ApiEndpoints.Swashbuckle" Version="4.0.1" />
+		<PackageReference Include="Ardalis.RouteAndBodyModelBinding" Version="0.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="6.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.5" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">

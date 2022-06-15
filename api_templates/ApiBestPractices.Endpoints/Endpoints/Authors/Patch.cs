@@ -4,7 +4,7 @@ using AutoMapper;
 using BackendData;
 using Microsoft.AspNetCore.Mvc;
 
-namespace apiendpoints.Endpoints.Authors;
+namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
 /// <summary>
 /// See: https://docs.microsoft.com/en-us/aspnet/core/web-api/jsonpatch?view=aspnetcore-6.0

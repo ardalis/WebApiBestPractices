@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "apiendpoints": {
+    "ApiBestPractices.Endpoints": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

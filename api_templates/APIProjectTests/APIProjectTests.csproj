@@ -44,7 +44,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\apiendpoints\apiendpoints.csproj" />
+		<ProjectReference Include="..\ApiBestPractices.Endpoints\ApiBestPractices.Endpoints.csproj" />
 		<ProjectReference Include="..\BackendData\BackendData.csproj" />
 	</ItemGroup>
 

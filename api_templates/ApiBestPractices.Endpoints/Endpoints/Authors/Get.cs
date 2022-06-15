@@ -3,7 +3,7 @@ using AutoMapper;
 using BackendData;
 using Microsoft.AspNetCore.Mvc;
 
-namespace apiendpoints.Endpoints.Authors;
+namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
 public class Get : EndpointBaseAsync
 			.WithRequest<int>

@@ -23,7 +23,9 @@ public class Create : EndpointBaseAsync
 	/// Creates a new Author
 	/// </summary>
 	[HttpPost("[namespace]")]
-	public override async Task<ActionResult> HandleAsync([FromBody] CreateAuthorCommand request, CancellationToken cancellationToken)
+	[ProducesResponseType(StatusCodes.Status201Created, Type=typeof(CreatedAuthorResult))]
+	public override async Task<ActionResult> HandleAsync([FromBody] CreateAuthorCommand request,
+		CancellationToken cancellationToken)
 	{
 		var author = new Author();
 		_mapper.Map(request, author);

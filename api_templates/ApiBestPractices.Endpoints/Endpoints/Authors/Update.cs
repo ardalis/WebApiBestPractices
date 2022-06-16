@@ -4,7 +4,7 @@ using AutoMapper;
 using BackendData;
 using Microsoft.AspNetCore.Mvc;
 
-namespace apiendpoints.Endpoints.Authors;
+namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
 public class Update : EndpointBaseAsync
 		.WithRequest<UpdateAuthorCommand>

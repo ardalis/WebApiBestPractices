@@ -1,4 +1,4 @@
-﻿namespace apiendpoints.Endpoints.Authors;
+﻿namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
 public class CreatedAuthorResult : CreateAuthorCommand
 {

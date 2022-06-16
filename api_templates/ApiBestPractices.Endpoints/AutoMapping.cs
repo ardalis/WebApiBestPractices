@@ -1,4 +1,4 @@
-﻿using apiendpoints.Endpoints.Authors;
+﻿using ApiBestPractices.Endpoints.Endpoints.Authors;
 using AutoMapper;
 using BackendData;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace apiendpoints;
+namespace ApiBestPractices.Endpoints;
 
 public class AutoMapping : Profile
 {

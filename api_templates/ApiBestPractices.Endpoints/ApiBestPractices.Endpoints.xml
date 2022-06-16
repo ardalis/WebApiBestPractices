@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiBestPractices.Endpoints</name>
+    </assembly>
+    <members>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Create.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.CreateAuthorCommand,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new Author
+            </summary>
+        </member>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Delete.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.DeleteAuthorRequest,System.Threading.CancellationToken)">
+            <summary>
+            Deletes an Author
+            </summary>
+        </member>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Get.HandleAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Get a specific Author
+            </summary>
+        </member>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.List.HandleAsync(System.Threading.CancellationToken)">
+            <summary>
+            List all Authors
+            </summary>
+        </member>
+        <member name="T:ApiBestPractices.Endpoints.Endpoints.Authors.Patch">
+            <summary>
+            See: https://docs.microsoft.com/en-us/aspnet/core/web-api/jsonpatch?view=aspnetcore-6.0
+            </summary>
+        </member>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Patch.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.PatchAuthorCommand,System.Threading.CancellationToken)">
+            <summary>
+            Updates an existing Author
+            </summary>
+        </member>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Update.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.UpdateAuthorCommand,System.Threading.CancellationToken)">
+            <summary>
+            Updates an existing Author
+            </summary>
+        </member>
+    </members>
+</doc>

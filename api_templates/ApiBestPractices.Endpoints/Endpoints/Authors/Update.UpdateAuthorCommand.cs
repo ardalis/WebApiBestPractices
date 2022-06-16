@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace apiendpoints.Endpoints.Authors;
+namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
 public class UpdateAuthorCommand
 {

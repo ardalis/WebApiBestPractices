@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
-namespace apiendpoints.Endpoints.Authors;
-
-public class CreateAuthorCommand
+public class AuthorDto
 {
-	[Required]
+	public string Id { get; set; } = null!;
 	public string Name { get; set; } = null!;
 	public string PluralsightUrl { get; set; } = null!;
 	public string? TwitterAlias { get; set; }
 }
-
-

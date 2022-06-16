@@ -1,4 +1,4 @@
-﻿using apiendpoints.Endpoints.Authors;
+﻿using ApiBestPractices.Endpoints.Endpoints.Authors;
 using Ardalis.RouteAndBodyModelBinding;
 using BackendData;
 using BackendData.DataAccess;
@@ -30,7 +30,7 @@ builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 builder.Services.AddSwaggerGen(c =>
 {
 	c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Endpoints", Version = "v1" });
-	c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "apiendpoints.xml"));
+	c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ApiBestPractices.Endpoints.xml"));
 	c.UseApiEndpoints();
 	c.OperationFilter<RouteAndBodyOperationFilter>();
 });

@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API Projects", "API Project
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8F4D3419-3DD8-4847-BC2A-2A8DC17ED8D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apiendpoints", "api_templates\apiendpoints\apiendpoints.csproj", "{645C9A3F-2745-4FD3-BB1C-C49A93765DEA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "controllers", "api_templates\controllers\controllers.csproj", "{598E8089-2F57-4E6A-B2E1-F5E594ECF887}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastEndpointsAPI", "api_templates\fastendpoints\FastEndpointsAPI.csproj", "{9450CEC4-A630-4B51-A007-E7CF602E20C5}"
@@ -26,16 +24,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendData", "api_template
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIProjectTests", "api_templates\APIProjectTests\APIProjectTests.csproj", "{55920625-28C8-4C64-A281-C57C0F9A9336}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBestPractices.Endpoints", "api_templates\ApiBestPractices.Endpoints\ApiBestPractices.Endpoints.csproj", "{5586351A-B0F3-4577-AFDB-1FDE50B8E03D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{645C9A3F-2745-4FD3-BB1C-C49A93765DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{645C9A3F-2745-4FD3-BB1C-C49A93765DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{645C9A3F-2745-4FD3-BB1C-C49A93765DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{645C9A3F-2745-4FD3-BB1C-C49A93765DEA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{598E8089-2F57-4E6A-B2E1-F5E594ECF887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{598E8089-2F57-4E6A-B2E1-F5E594ECF887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{598E8089-2F57-4E6A-B2E1-F5E594ECF887}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,17 +52,21 @@ Global
 		{55920625-28C8-4C64-A281-C57C0F9A9336}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55920625-28C8-4C64-A281-C57C0F9A9336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55920625-28C8-4C64-A281-C57C0F9A9336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5586351A-B0F3-4577-AFDB-1FDE50B8E03D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5586351A-B0F3-4577-AFDB-1FDE50B8E03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5586351A-B0F3-4577-AFDB-1FDE50B8E03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5586351A-B0F3-4577-AFDB-1FDE50B8E03D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{645C9A3F-2745-4FD3-BB1C-C49A93765DEA} = {BF524179-7DDB-4E90-8E23-8D738F60347C}
 		{598E8089-2F57-4E6A-B2E1-F5E594ECF887} = {BF524179-7DDB-4E90-8E23-8D738F60347C}
 		{9450CEC4-A630-4B51-A007-E7CF602E20C5} = {BF524179-7DDB-4E90-8E23-8D738F60347C}
 		{2DCDBB44-38A9-4537-BDB2-6CAFA3A0D3AD} = {BF524179-7DDB-4E90-8E23-8D738F60347C}
 		{00DE605E-ACE3-46E6-B5B3-C2D283DA3DAB} = {DE8D8BA4-19B1-4079-8847-BB05E31DAB0A}
 		{55920625-28C8-4C64-A281-C57C0F9A9336} = {8F4D3419-3DD8-4847-BC2A-2A8DC17ED8D5}
+		{5586351A-B0F3-4577-AFDB-1FDE50B8E03D} = {BF524179-7DDB-4E90-8E23-8D738F60347C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3DAE36F-B1E7-40B6-B6A0-CBA0C3920CB1}

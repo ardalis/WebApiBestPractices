@@ -1,6 +1,6 @@
-﻿namespace apiendpoints.Endpoints.Authors;
+﻿namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
-public class PatchedAuthorResult
+public class UpdatedAuthorResult
 {
 	public string Id { get; set; } = null!;
 	public string Name { get; set; } = null!;

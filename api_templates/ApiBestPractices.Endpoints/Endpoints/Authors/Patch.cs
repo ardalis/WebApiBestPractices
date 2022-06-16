@@ -43,11 +43,20 @@ public class Patch : EndpointBaseAsync
 		return result;
 	}
 
-	/* Example:
+	/* Examples:
 	{
 		"patchDocument": [
 		{ "op": "replace", "path": "/name", "value": "steve" },
 		]
 	}
+	{
+  "patchDocument":  [
+        {
+            "op": "replace",
+            "value": "updated",
+            "path":"/twitterAlias"
+        }
+    ]
+}
 	*/
 }

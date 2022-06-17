@@ -1,10 +1,6 @@
 ﻿using ApiBestPractices.Endpoints.Endpoints.Authors;
 using AutoMapper;
 using BackendData;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ApiBestPractices.Endpoints;
 
@@ -15,7 +11,7 @@ public class AutoMapping : Profile
 		CreateMap<CreateAuthorCommand, Author>();
 		CreateMap<Author, CreatedAuthorResult>();
 
-		CreateMap<UpdateAuthorCommand, Author>();
+		CreateMap<UpdateAuthorCommand, Author>().ReverseMap();
 		CreateMap<Author, UpdatedAuthorResult>();
 
 		CreateMap<Author, AuthorListResult>();

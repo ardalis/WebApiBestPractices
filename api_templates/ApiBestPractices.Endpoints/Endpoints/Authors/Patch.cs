@@ -33,10 +33,14 @@ public class Patch : EndpointBaseAsync
 		var author = await _repository.GetByIdAsync(request.Id, cancellationToken);
 		if (author is null) return NotFound();
 
-		var dto = _mapper.Map<AuthorDto>(author);
-		request.PatchDocument.ApplyTo(dto);
+		var updatecommand = _mapper.Map<UpdateAuthorCommand>(author);
+		request.PatchDocument.ApplyTo(updatecommand);
 
-		_mapper.Map(dto, author);
+		// perform model validation of the changes
+		TryValidateModel(updatecommand);
+		if (!ModelState.IsValid) return BadRequest(ModelState);
+
+		_mapper.Map(updatecommand, author);
 		await _repository.UpdateAsync(author, cancellationToken);
 
 		var result = _mapper.Map<PatchedAuthorResult>(author);

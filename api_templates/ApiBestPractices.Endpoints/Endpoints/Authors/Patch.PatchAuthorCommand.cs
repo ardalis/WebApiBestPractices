@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
@@ -11,5 +10,5 @@ public class PatchAuthorCommand
 	public int Id { get; set; }
 
 	[Required]
-	public JsonPatchDocument<AuthorDto> PatchDocument { get; set; }
+	public JsonPatchDocument<UpdateAuthorCommand> PatchDocument { get; set; }
 }

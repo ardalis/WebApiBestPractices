@@ -11,6 +11,7 @@ public class CreateAuthorCommand
 	[MaxLength(ConfigConstants.DEFAULT_URI_LENGTH)]
 	public string PluralsightUrl { get; set; } = null!;
 	[MaxLength(ConfigConstants.DEFAULT_NAME_LENGTH)]
+	[RegularExpression("^@(\\w){1,15}$")]
 	public string? TwitterAlias { get; set; }
 }
 

@@ -1,4 +1,4 @@
 ﻿namespace controllers.ApiModels
 {
-	public record AuthorDto(Guid Id, string Name, string TwitterAlias);
+	public record AuthorDto(int Id, string Name, string TwitterAlias);
 }

@@ -24,7 +24,7 @@ public class Patch : EndpointBaseAsync
 	}
 
 	/// <summary>
-	/// Updates an existing Author
+	/// Patches an existing Author
 	/// </summary>
 	[HttpPatch("[namespace]/{id}")]
 	public override async Task<ActionResult<PatchedAuthorResult>> HandleAsync([FromRouteAndBody] PatchAuthorCommand request,
@@ -41,13 +41,23 @@ public class Patch : EndpointBaseAsync
 
 		var result = _mapper.Map<PatchedAuthorResult>(author);
 		return result;
+		// NOTE: Alternately you could return a 204 No Content with a Location Header pointing to /authors/{id}
 	}
 
-	/* Example:
+	/* Examples:
 	{
 		"patchDocument": [
 		{ "op": "replace", "path": "/name", "value": "steve" },
 		]
 	}
+	{
+  "patchDocument":  [
+        {
+            "op": "replace",
+            "value": "updated",
+            "path":"/twitterAlias"
+        }
+    ]
+}
 	*/
 }

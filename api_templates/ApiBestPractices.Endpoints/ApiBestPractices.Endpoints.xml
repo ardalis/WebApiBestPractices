@@ -31,7 +31,7 @@
         </member>
         <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Patch.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.PatchAuthorCommand,System.Threading.CancellationToken)">
             <summary>
-            Updates an existing Author
+            Patches an existing Author
             </summary>
         </member>
         <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Update.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.UpdateAuthorCommand,System.Threading.CancellationToken)">

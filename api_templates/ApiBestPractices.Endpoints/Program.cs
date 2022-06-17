@@ -1,4 +1,5 @@
-﻿using ApiBestPractices.Endpoints.Endpoints.Authors;
+﻿using ApiBestPractices.Endpoints;
+using ApiBestPractices.Endpoints.Endpoints.Authors;
 using Ardalis.RouteAndBodyModelBinding;
 using BackendData;
 using BackendData.DataAccess;
@@ -33,6 +34,7 @@ builder.Services.AddSwaggerGen(c =>
 	c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ApiBestPractices.Endpoints.xml"));
 	c.UseApiEndpoints();
 	c.OperationFilter<RouteAndBodyOperationFilter>();
+	//c.DocumentFilter<JsonPatchDocumentFilter>();
 });
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
-﻿using BackendData;
+﻿using System.ComponentModel.DataAnnotations;
+using BackendData;
 using MinimalApi.Endpoint;
 
 namespace minimal.Authors;
@@ -14,7 +15,7 @@ public class Create : IEndpoint<IResult, CreateAuthorRequest>
 			return await HandleAsync(request);
 		})
 			.Produces<AuthorCreatedResponse>()
-			.WithTags("AuthorApi");
+			.WithTags("AuthorsApi");
 	}
 
 	public async Task<IResult> HandleAsync(CreateAuthorRequest request)
@@ -25,11 +26,12 @@ public class Create : IEndpoint<IResult, CreateAuthorRequest>
 			TwitterAlias = request.TwitterAlias
 		};
 		await _authorRepository.AddAsync(author, new CancellationToken());
-		var response = new AuthorCreatedResponse(author.Id, author.Name, author.TwitterAlias);
-		return Results.Created("/authors/{author.Id}", response);
+		var response = new AuthorCreatedResponse(author.Id, author.Name, author.TwitterAlias, author.PluralsightUrl);
+		return Results.Created($"/authors/{author.Id}", response);
 	}
 }
 
-public record CreateAuthorRequest(string Name, string TwitterAlias);
-public record AuthorCreatedResponse(int Id, string Name, string TwitterAlias);
+// NOTE: Minimal APIs don't support model validation in version 6
+public record CreateAuthorRequest([Required]string Name, string TwitterAlias);
+public record AuthorCreatedResponse(int Id, string Name, string TwitterAlias, string PluralsightUrl);
 

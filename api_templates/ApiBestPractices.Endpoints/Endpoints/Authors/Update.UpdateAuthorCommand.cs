@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
+using BackendData.DataAccess.Config;
 
 namespace ApiBestPractices.Endpoints.Endpoints.Authors;
 
@@ -11,7 +11,10 @@ public class UpdateAuthorCommand
 	public int Id { get; set; }
 
 	[Required]
+	[MaxLength(ConfigConstants.DEFAULT_NAME_LENGTH)]
 	public string Name { get; set; } = null!;
+	[MaxLength(ConfigConstants.DEFAULT_URI_LENGTH)]
 	public string? PluralsightUrl { get; set; }
+	[MaxLength(ConfigConstants.DEFAULT_NAME_LENGTH)]
 	public string? TwitterAlias { get; set; }
 }

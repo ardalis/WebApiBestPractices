@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace controllers.Controllers;
 
+[ApiController]
 [Route("Authors")]
 [ApiController]
 public class AuthorsController : ControllerBase
@@ -47,6 +48,6 @@ public class AuthorsController : ControllerBase
 		await _authorRepository.AddAsync(author, cancellationToken);
 
 		var authorDto = new AuthorDto(author.Id, author.Name, author.TwitterAlias);
-		return Created("authors/{id}", authorDto);
+		return Created($"authors/{author.Id}", authorDto);
 	}
 }

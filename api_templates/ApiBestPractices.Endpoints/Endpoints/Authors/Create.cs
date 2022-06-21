@@ -24,6 +24,7 @@ public class Create : EndpointBaseAsync
 	/// </summary>
 	[HttpPost("[namespace]")]
 	[ProducesResponseType(StatusCodes.Status201Created, Type=typeof(CreatedAuthorResult))]
+	[ProducesResponseType(StatusCodes.Status400BadRequest)]
 	public override async Task<ActionResult> HandleAsync([FromBody] CreateAuthorCommand request,
 		CancellationToken cancellationToken)
 	{

@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using MinimalApi.Endpoint.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// MinimalApi.Endpoint registration
 builder.Services.AddEndpoints();
 
 // Add services to the container.

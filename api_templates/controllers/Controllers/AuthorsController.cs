@@ -5,22 +5,46 @@ using Microsoft.AspNetCore.Mvc;
 namespace controllers.Controllers;
 
 [Route("Authors")]
+[ApiController]
 public class AuthorsController : ControllerBase
 {
-	[HttpGet]
-	public ActionResult<List<AuthorDto>> Index()
+	private readonly ILogger<AuthorsController> _logger;
+	private readonly IAsyncRepository<Author> _authorRepository;
+
+	public AuthorsController(ILogger<AuthorsController> logger,
+		IAsyncRepository<Author> authorRepository)
 	{
-		return new List<AuthorDto>();
+		_logger = logger;
+		_authorRepository = authorRepository;
+	}
+
+	[HttpGet]
+	[ResponseCache(Duration = 10, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "*" })]
+	// NOTE: VaryByQueryKeys requires adding Response Cache Middleware (and services)
+	public async Task<ActionResult<List<AuthorDto>>> Index(CancellationToken cancellationToken)
+	{
+		_logger.LogInformation("Returning Author List from /Authors.");
+
+		var authors = await _authorRepository.ListAllAsync(cancellationToken);
+
+		var responseModel = authors
+			.Select(a => new AuthorDto(a.Id, a.Name, a.TwitterAlias ?? ""));
+
+		return Ok(responseModel);
 	}
 
 	[HttpPost]
-	[ProducesResponseType(StatusCodes.Status201Created, Type=typeof(AuthorDto))]
-	public IActionResult Create(AuthorDto newAuthor)
+	[ProducesResponseType(StatusCodes.Status201Created, Type = typeof(AuthorDto))]
+	public async Task<ActionResult<AuthorDto>> Create(AuthorDto newAuthor,
+		CancellationToken cancellationToken)
 	{
-		var author = new Author { Name = newAuthor.Name, 
-			TwitterAlias = newAuthor.TwitterAlias };
+		var author = new Author
+		{
+			Name = newAuthor.Name,
+			TwitterAlias = newAuthor.TwitterAlias
+		};
 
-		// Add to db
+		await _authorRepository.AddAsync(author, cancellationToken);
 
 		var authorDto = new AuthorDto(author.Id, author.Name, author.TwitterAlias);
 		return Created("authors/{id}", authorDto);

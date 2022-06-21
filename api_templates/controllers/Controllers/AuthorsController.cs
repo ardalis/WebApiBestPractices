@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace controllers.Controllers;
 
+
 [ApiController]
 [Route("Authors")]
-[ApiController]
 public class AuthorsController : ControllerBase
 {
 	private readonly ILogger<AuthorsController> _logger;
@@ -29,7 +29,8 @@ public class AuthorsController : ControllerBase
 		var authors = await _authorRepository.ListAllAsync(cancellationToken);
 
 		var responseModel = authors
-			.Select(a => new AuthorDto(a.Id, a.Name, a.TwitterAlias ?? ""));
+			.Select(a => new AuthorDto(a.Id, a.Name, a.TwitterAlias ?? ""))
+			.ToList();
 
 		return Ok(responseModel);
 	}

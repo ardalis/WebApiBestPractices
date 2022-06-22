@@ -57,7 +57,7 @@ internal class ScopedProcessingService : IScopedProcessingService
 
 			var authorsWithInvalidTwitterAlias = (await _authorRepository
 				.ListAllAsync(stoppingToken))
-				.Where(author => author.TwitterAlias.Length > 0 && 
+				.Where(author => author.TwitterAlias?.Length > 0 && 
 							!author.TwitterAlias.StartsWith('@'))
 				.ToList();
 

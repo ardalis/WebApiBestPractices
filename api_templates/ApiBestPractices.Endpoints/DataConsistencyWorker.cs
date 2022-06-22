@@ -35,9 +35,11 @@ internal interface IScopedProcessingService
 	Task DoWork(CancellationToken stoppingToken);
 }
 
+/// <summary>
+/// Source: https://docs.microsoft.com/en-us/dotnet/core/extensions/scoped-service
+/// </summary>
 internal class ScopedProcessingService : IScopedProcessingService
 {
-	private int executionCount = 0;
 	private readonly ILogger _logger;
 	private readonly IAsyncRepository<Author> _authorRepository;
 

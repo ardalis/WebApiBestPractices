@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/api_templates/minimal/database.sqlite
+/api_templates/ApiBestPractices.Endpoints/database.sqlite

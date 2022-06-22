@@ -37,6 +37,9 @@ builder.Services.AddSwaggerGen(c =>
 	//c.DocumentFilter<JsonPatchDocumentFilter>();
 });
 
+builder.Services.AddHostedService<DataConsistencyWorker>();
+builder.Services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
+
 var app = builder.Build();
 
 await EnsureDb(app.Services, app.Logger);

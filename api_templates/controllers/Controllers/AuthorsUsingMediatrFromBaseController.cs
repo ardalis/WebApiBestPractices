@@ -1,6 +1,5 @@
 ﻿using controllers.ApiModels;
 using controllers.Handlers;
-using controllers.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

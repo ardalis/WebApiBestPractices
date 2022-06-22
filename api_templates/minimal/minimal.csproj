@@ -11,6 +11,7 @@
 		<PackageReference Include="MinimalApi.Endpoint" Version="1.1.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
 		<PackageReference Include="MinimalApis.Extensions" Version="0.7.0-pre.20220528.28" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>

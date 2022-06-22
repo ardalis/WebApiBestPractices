@@ -3,7 +3,6 @@ using BackendData;
 using MinimalApi.Endpoint;
 
 namespace minimal.Authors;
-
 public class Create : IEndpoint<IResult, CreateAuthorRequest>
 {
 	private IAsyncRepository<Author> _authorRepository;

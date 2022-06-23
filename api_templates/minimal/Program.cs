@@ -54,7 +54,7 @@ app.MapGet("/authors", async (AppDbContext db) => await db.Authors.ToListAsync()
 	 .WithName("ListAuthors")
 	 .WithTags("AuthorsApi");
 
-// Using simple minimal APIs Delete an Author
+// Using simple minimal APIs to Delete an Author
 app.MapDelete("/authors/{id}",
 	[SwaggerOperation(
 				Summary = "Deletes an author.",
@@ -81,11 +81,4 @@ async Task EnsureDb(IServiceProvider services, ILogger logger)
 		logger.LogInformation("Ensuring database exists and is up to date at connection string '{connectionString}'", connectionString);
 		await db.Database.MigrateAsync();
 	}
-}
-
-public class AuthorDto
-{
-	public int Id { get; set; }
-	public string Name { get; set; }
-	public string TwitterAlias { get; set; }
 }

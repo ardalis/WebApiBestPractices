@@ -24,7 +24,8 @@ public class Update : EndpointBaseAsync
 	/// Updates an existing Author
 	/// </summary>
 	[HttpPut("[namespace]/{id}")]
-	public override async Task<ActionResult<UpdatedAuthorResult>> HandleAsync([FromRouteAndBody] UpdateAuthorCommand request,
+	public override async Task<ActionResult<UpdatedAuthorResult>> HandleAsync(
+		[FromRouteAndBody] UpdateAuthorCommand request,
 		CancellationToken cancellationToken)
 	{
 		var author = await _repository.GetByIdAsync(request.Id, cancellationToken);

@@ -4,6 +4,11 @@
         <name>ApiBestPractices.Endpoints</name>
     </assembly>
     <members>
+        <member name="T:ApiBestPractices.Endpoints.ScopedProcessingService">
+            <summary>
+            Source: https://docs.microsoft.com/en-us/dotnet/core/extensions/scoped-service
+            </summary>
+        </member>
         <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Create.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.CreateAuthorCommand,System.Threading.CancellationToken)">
             <summary>
             Creates a new Author

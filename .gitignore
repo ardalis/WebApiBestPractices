@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 /api_templates/minimal/database.sqlite
 /api_templates/ApiBestPractices.Endpoints/database.sqlite
+/api_templates/controllers/database.sqlite

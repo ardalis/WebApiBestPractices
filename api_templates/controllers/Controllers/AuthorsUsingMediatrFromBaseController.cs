@@ -19,11 +19,11 @@ public class AuthorsUsingMediatrFromBaseController : MyBaseApiController
 {
 	[HttpPost()]
 	[ProducesResponseType(StatusCodes.Status201Created, Type = typeof(AuthorDto))]
-	public async Task<ActionResult<AuthorDto>> Create(AuthorDto newAuthor,
+	public async Task<ActionResult<AuthorDto>> Create(CreateAuthorCommand newAuthorCommand,
 		CancellationToken cancellationToken)
 	{
-		var createAuthorCommand = new CreateAuthorCommand(newAuthor.Name, newAuthor.TwitterAlias);
-		var createdAuthorDto = await Mediator.Send(createAuthorCommand, cancellationToken);
+		//var createAuthorCommand = new CreateAuthorCommand(newAuthor.Name, newAuthor.TwitterAlias);
+		var createdAuthorDto = await Mediator.Send(newAuthorCommand, cancellationToken);
 		return Created($"authors/{createdAuthorDto.Id}", createdAuthorDto);
 	}
 }

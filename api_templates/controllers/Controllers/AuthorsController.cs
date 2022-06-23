@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace controllers.Controllers;
 
-
 [ApiController]
 [Route("Authors")]
 public class AuthorsController : ControllerBase
@@ -19,6 +18,7 @@ public class AuthorsController : ControllerBase
 		_authorRepository = authorRepository;
 	}
 
+	#region Other actions
 	[HttpGet]
 	[ResponseCache(Duration = 10, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "*" })]
 	// NOTE: VaryByQueryKeys requires adding Response Cache Middleware (and services)
@@ -34,7 +34,8 @@ public class AuthorsController : ControllerBase
 
 		return Ok(responseModel);
 	}
-
+	#endregion
+	
 	[HttpPost]
 	[ProducesResponseType(StatusCodes.Status201Created, Type = typeof(AuthorDto))]
 	public async Task<ActionResult<AuthorDto>> Create(AuthorDto newAuthor,

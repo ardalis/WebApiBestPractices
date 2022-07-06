@@ -9,9 +9,12 @@ Below are a selection of links I referenced when building this course.
 ### RFCs
 
 - [RFC2616 - HTTP 1.1](https://datatracker.ietf.org/doc/html/rfc2616#section-10)
-- [RFC7231 - HTTP 1.1 - Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.2)
 - [RFC6585 - Additional HTTP Status Codes](https://www.rfc-editor.org/rfc/rfc6585#section-4)
+- [RFC6648 - Deprecating 'X-' Prefix](https://datatracker.ietf.org/doc/html/rfc6648)
 - [RFC6819 - Authorization Headers](https://www.rfc-editor.org/rfc/rfc6819#section-5.4.1)
+- [RFC7231 - HTTP 1.1 - Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.2)
+- [RFC7396 - JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7396)
+- [RFC7807 - Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)
 
 ### ASP.NET Core Docs
 
@@ -20,6 +23,7 @@ Below are a selection of links I referenced when building this course.
 - [Minimal APIs Overview](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0)
 - [Response Caching Middleware in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/middleware?view=aspnetcore-6.0)
 - [Response Compression in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/response-compression?view=aspnetcore-6.0)
+- [Web APIs - Handle Errors](https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors?view=aspnetcore-6.0)
 
 ### Stack Overflow Discussions
 
@@ -28,6 +32,7 @@ Below are a selection of links I referenced when building this course.
 - [403 Forbidden vs 401 Unauthorized Http Responses](https://stackoverflow.com/questions/3297048/403-forbidden-vs-401-unauthorized-http-responses)
 - [How to use Created or CreatedAtAction or CreatedAtRoute in ASP.NET Core API](https://stackoverflow.com/questions/47939945/how-to-use-created-or-createdataction-createdatroute-in-an-asp-net-core-api)
 - [What are the main differences between JWT and OAuth Authentication](https://stackoverflow.com/questions/39909419/what-are-the-main-differences-between-jwt-and-oauth-authentication)
+- [Pagination Response Payload from a RESTful API](https://stackoverflow.com/questions/12168624/pagination-response-payload-from-a-restful-api)
 
 ### Software Engineering StackExchange Discussions
 
@@ -44,15 +49,20 @@ Below are a selection of links I referenced when building this course.
 - [3 Ways to Return Data from the Controllers Action Method in ASP.NET Core](https://www.c-sharpcorner.com/article/3-ways-to-return-the-data-from-controller-action-method-in-asp-net-core/)
 - [ASP.NET Core Web API Creating and Validating JWT Json Web Token](https://www.c-sharpcorner.com/article/asp-net-core-web-api-creating-and-validating-jwt-json-web-token/)
 - [Using ProducesResponseType to Write a Better Web API Action in .NET Core](https://medium.com/@mohammed0hamdan/using-producesresponsetype-to-write-a-better-web-api-actions-in-net-core-18e080c9bf00)
+- [Response Compression Middleware in ASP.NET Core](https://www.c-sharpcorner.com/article/response-compression-middleware-in-asp-net-core/)
 - [PUT vs POST](https://www.keycdn.com/support/put-vs-post)
 - [GitHub API: Pages](https://docs.github.com/en/rest/pages)
 - [GitHub API: Traversing with Pagination](https://docs.github.com/en/rest/guides/traversing-with-pagination)
 - [Anatomy of a JWT](https://fusionauth.io/learn/expert-advice/tokens/anatomy-of-jwt)
 - [JWT Security](https://owasp.org/www-chapter-belgium/assets/2021/2021-02-18/JWT-Security.pdf)
-- [](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/secure-net-microservices-web-applications/#authenticate-with-bearer-tokens)
+- [Secure .NET Microservices](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/secure-net-microservices-web-applications/#authenticate-with-bearer-tokens)
+- [IANA Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xml)
+- [Content Negotiation in Web API](https://code-maze.com/content-negotiation-web-api/)
 
 ### GitHub Repos
 
+- [REST API Response Formats](https://github.com/cryptlex/rest-api-response-format)
 - [StructuredMinimalAPI](https://github.com/michelcedric/StructuredMinimalApi)
+- [FastEndpoints](https://github.com/dj-nitehawk/FastEndpoints)
 - [Minimal API Playground](https://github.com/DamianEdwards/MinimalApiPlayground)
 - [Swashbuckle.WebApi](https://github.com/domaindrivendev/Swashbuckle.WebApi/issues/1230)

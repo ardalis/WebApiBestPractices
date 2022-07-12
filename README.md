@@ -66,3 +66,4 @@ Below are a selection of links I referenced when building this course.
 - [FastEndpoints](https://github.com/dj-nitehawk/FastEndpoints)
 - [Minimal API Playground](https://github.com/DamianEdwards/MinimalApiPlayground)
 - [Swashbuckle.WebApi](https://github.com/domaindrivendev/Swashbuckle.WebApi/issues/1230)
+- [JWT-API Sample](https://github.com/evgomes/jwt-api)

@@ -28,7 +28,7 @@ namespace OwnerPermissions.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> View(Guid documentId)
+		public async Task<IActionResult> GetById(int documentId)
 		{
 			_logger.LogInformation($"Attempting to view documentId {documentId} as {User.Identity.Name}");
 			Document document = _documentRepository.Find(documentId);
@@ -38,8 +38,16 @@ namespace OwnerPermissions.Controllers
 				return new NotFoundResult();
 			}
 
-			if ((await _authorizationService
-					.AuthorizeAsync(User, document, Operations.Read)).Succeeded)
+			var userIsAuthorized = (await _authorizationService
+					.AuthorizeAsync(User, document, Operations.Read)).Succeeded;
+
+			//if ((await _authorizationService
+			//					.AuthorizeAsync(User, document, "EditPolicy")).Succeeded)
+			//{
+			//	return Ok(document);
+			//}
+
+			if (userIsAuthorized)
 			{
 				return Ok(document);
 			}

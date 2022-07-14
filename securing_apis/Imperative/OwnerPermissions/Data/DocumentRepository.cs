@@ -4,13 +4,13 @@ namespace OwnerPermissions.Data;
 
 public class DocumentRepository : IDocumentRepository
 {
-	public Document Find(Guid documentId)
+	public Document Find(int documentId)
 	{
 		return new Document
 		{
 			Author = "BALERION\\User", // change this to your windows account name
 			Content = "document content",
-			ID = documentId,
+			Id = documentId,
 			Title = "Test Document"
 		};
 	}

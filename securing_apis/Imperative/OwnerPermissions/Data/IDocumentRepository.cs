@@ -4,5 +4,5 @@ namespace OwnerPermissions.Data;
 
 public interface IDocumentRepository
 {
-	Document Find(Guid documentId);
+	Document Find(int documentId);
 }

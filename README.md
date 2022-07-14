@@ -12,6 +12,7 @@ Below are a selection of links I referenced when building this course.
 - [RFC6454 - The Web Origin Concept](https://datatracker.ietf.org/doc/html/rfc6454)
 - [RFC6585 - Additional HTTP Status Codes](https://www.rfc-editor.org/rfc/rfc6585#section-4)
 - [RFC6648 - Deprecating 'X-' Prefix](https://datatracker.ietf.org/doc/html/rfc6648)
+- [RFC6797 - HTTP Strict Transport Security](https://datatracker.ietf.org/doc/html/rfc6797)
 - [RFC6819 - Authorization Headers](https://www.rfc-editor.org/rfc/rfc6819#section-5.4.1)
 - [RFC7231 - HTTP 1.1 - Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.2)
 - [RFC7396 - JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7396)

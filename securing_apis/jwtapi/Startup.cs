@@ -7,85 +7,68 @@ using JWTAPI.Persistence;
 using JWTAPI.Security.Hashing;
 using JWTAPI.Security.Tokens;
 using JWTAPI.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
-namespace JWTAPI
+namespace JWTAPI;
+
+/// <summary>
+/// See: https://github.com/ardalis/jwt-api forked from
+/// https://github.com/evgomes/jwt-api
+/// </summary>
+public class Startup
 {
-	/// <summary>
-	/// See: https://github.com/ardalis/jwt-api forked from
-	/// https://github.com/evgomes/jwt-api
-	/// </summary>
-	public class Startup
+	public IConfiguration Configuration { get; }
+
+	public Startup(IConfiguration configuration)
 	{
-		public IConfiguration Configuration { get; }
+		Configuration = configuration;
+	}
 
-		public Startup(IConfiguration configuration)
+	public void ConfigureServices(IServiceCollection services)
+	{
+		services.AddDbContext<AppDbContext>(options =>
 		{
-			Configuration = configuration;
-		}
+			options.UseInMemoryDatabase("jwtapi");
+		});
 
-		public void ConfigureServices(IServiceCollection services)
+		services.AddControllers();
+
+		services.AddCustomSwagger();
+
+		services.AddScoped<IUserRepository, UserRepository>();
+		services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+		services.AddSingleton<IPasswordHasher, PasswordHasher>();
+		services.AddSingleton<ITokenHandler, Security.Tokens.TokenHandler>();
+
+		services.AddScoped<IUserService, UserService>();
+		services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+		services.Configure<TokenOptions>(Configuration.GetSection("TokenOptions"));
+		var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+		var signingConfigurations = new SigningConfigurations(tokenOptions.Secret);
+		services.AddSingleton(signingConfigurations);
+
+		services.ConfigureJwtAuthentication(tokenOptions, signingConfigurations);
+
+		services.AddAutoMapper(this.GetType().Assembly);
+	}
+
+	public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+	{
+		app.UseDeveloperExceptionPage();
+
+		app.UseRouting();
+
+		app.UseCustomSwagger();
+
+		app.UseAuthentication();
+		app.UseAuthorization();
+
+		app.UseEndpoints(endpoints =>
 		{
-			services.AddDbContext<AppDbContext>(options =>
-			{
-				options.UseInMemoryDatabase("jwtapi");
-			});
-
-			services.AddControllers();
-
-			services.AddCustomSwagger();
-
-			services.AddScoped<IUserRepository, UserRepository>();
-			services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-			services.AddSingleton<IPasswordHasher, PasswordHasher>();
-			services.AddSingleton<ITokenHandler, Security.Tokens.TokenHandler>();
-
-			services.AddScoped<IUserService, UserService>();
-			services.AddScoped<IAuthenticationService, AuthenticationService>();
-
-			services.Configure<TokenOptions>(Configuration.GetSection("TokenOptions"));
-			var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-
-			var signingConfigurations = new SigningConfigurations(tokenOptions.Secret);
-			services.AddSingleton(signingConfigurations);
-
-			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-				.AddJwtBearer(jwtBearerOptions =>
-				{
-					jwtBearerOptions.TokenValidationParameters =
-						new TokenValidationParameters()
-						{
-							ValidateAudience = true,
-							ValidateLifetime = true,
-							ValidateIssuerSigningKey = true,
-							ValidIssuer = tokenOptions.Issuer,
-							ValidAudience = tokenOptions.Audience,
-							IssuerSigningKey = signingConfigurations.SecurityKey,
-							ClockSkew = TimeSpan.Zero
-						};
-				});
-
-			services.AddAutoMapper(this.GetType().Assembly);
-		}
-
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-		{
-			app.UseDeveloperExceptionPage();
-
-			app.UseRouting();
-
-			app.UseCustomSwagger();
-
-			app.UseAuthentication();
-			app.UseAuthorization();
-
-			app.UseEndpoints(endpoints =>
-			{
-				endpoints.MapControllers();
-			});
-		}
+			endpoints.MapControllers();
+		});
 	}
 }

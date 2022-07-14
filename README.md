@@ -9,6 +9,7 @@ Below are a selection of links I referenced when building this course.
 ### RFCs
 
 - [RFC2616 - HTTP 1.1](https://datatracker.ietf.org/doc/html/rfc2616#section-10)
+- [RFC6454 - The Web Origin Concept](https://datatracker.ietf.org/doc/html/rfc6454)
 - [RFC6585 - Additional HTTP Status Codes](https://www.rfc-editor.org/rfc/rfc6585#section-4)
 - [RFC6648 - Deprecating 'X-' Prefix](https://datatracker.ietf.org/doc/html/rfc6648)
 - [RFC6819 - Authorization Headers](https://www.rfc-editor.org/rfc/rfc6819#section-5.4.1)
@@ -24,6 +25,8 @@ Below are a selection of links I referenced when building this course.
 - [Response Caching Middleware in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/middleware?view=aspnetcore-6.0)
 - [Response Compression in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/response-compression?view=aspnetcore-6.0)
 - [Web APIs - Handle Errors](https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors?view=aspnetcore-6.0)
+- [Enable CORS in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-6.0)
+- [Enforce HTTPS in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0)
 
 ### Stack Overflow Discussions
 

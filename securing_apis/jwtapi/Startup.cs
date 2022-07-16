@@ -39,7 +39,7 @@ public class Startup
 		services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 		services.AddSingleton<IPasswordHasher, PasswordHasher>();
-		services.AddSingleton<ITokenHandler, Security.Tokens.TokenHandler>();
+		services.AddSingleton<ITokenHandler, TokenHandler>();
 
 		services.AddScoped<IUserService, UserService>();
 		services.AddScoped<IAuthenticationService, AuthenticationService>();

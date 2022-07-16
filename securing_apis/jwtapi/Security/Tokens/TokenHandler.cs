@@ -53,18 +53,6 @@ public class TokenHandler : ITokenHandler
 		_refreshTokens.Remove(refreshTokenWithEmail);
 
 		return refreshTokenWithEmail.RefreshToken;
-
-		//var key = _refreshTokens.SingleOrDefault(entry => entry.Value.Token == token)!.Key;
-		//if(key != null)
-		//{
-		//	_refreshTokens.Remove(key);
-		//}
-
-		//var refreshToken = _refreshTokens.Values.SingleOrDefault(t => t.Token == token);
-		//if (refreshToken != null)
-		//	_refreshTokens.Remove(refreshToken);
-
-		//return refreshToken;
 	}
 
 	public void RevokeRefreshToken(string token, string email)

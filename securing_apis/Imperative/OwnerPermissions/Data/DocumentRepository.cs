@@ -8,7 +8,7 @@ public class DocumentRepository : IDocumentRepository
 	{
 		return new Document
 		{
-			Author = "BALERION\\User", // change this to your windows account name
+			Author = "COMPUTERNAME\\UserName", // change this to your windows account name
 			Content = "document content",
 			Id = documentId,
 			Title = "Test Document"

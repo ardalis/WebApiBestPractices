@@ -1,11 +1,10 @@
-using JWTAPI.Core.Models;
+﻿using JWTAPI.Core.Models;
 
-namespace JWTAPI.Core.Security.Tokens
+namespace JWTAPI.Core.Security.Tokens;
+
+public interface ITokenHandler
 {
-    public interface ITokenHandler
-    {
-         AccessToken CreateAccessToken(User user);
-         RefreshToken TakeRefreshToken(string token);
-         void RevokeRefreshToken(string token);
-    }
+	AccessToken CreateAccessToken(User user);
+	RefreshToken TakeRefreshToken(string token, string email);
+	void RevokeRefreshToken(string token, string email);
 }

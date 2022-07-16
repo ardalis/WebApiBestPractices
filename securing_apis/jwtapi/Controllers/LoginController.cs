@@ -65,7 +65,7 @@ public class AuthController : Controller
 			return BadRequest(ModelState);
 		}
 
-		_authenticationService.RevokeRefreshToken(revokeTokenResource.Token);
+		_authenticationService.RevokeRefreshToken(revokeTokenResource.Token, revokeTokenResource.EmailAddress);
 		return NoContent();
 	}
 }

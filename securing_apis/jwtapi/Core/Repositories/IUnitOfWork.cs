@@ -1,7 +1,6 @@
-namespace JWTAPI.Core.Repositories
+﻿namespace JWTAPI.Core.Repositories;
+
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork
-    {
-         Task CompleteAsync();
-    }
+	Task CompleteAsync();
 }

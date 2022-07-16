@@ -1,15 +1,14 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace JWTAPI.Controllers.Resources
+namespace JWTAPI.Controllers.Resources;
+
+public class RefreshTokenResource
 {
-    public class RefreshTokenResource
-    {
-        [Required]
-        public string Token { get; set; }
+	[Required]
+	public string Token { get; set; }
 
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        [StringLength(255)]
-        public string UserEmail { get; set; }
-    }
+	[Required]
+	[DataType(DataType.EmailAddress)]
+	[StringLength(255)]
+	public string UserEmail { get; set; }
 }

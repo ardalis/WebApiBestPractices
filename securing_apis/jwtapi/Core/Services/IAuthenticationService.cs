@@ -1,11 +1,10 @@
-using JWTAPI.Core.Services.Communication;
+﻿using JWTAPI.Core.Services.Communication;
 
-namespace JWTAPI.Core.Services
+namespace JWTAPI.Core.Services;
+
+public interface IAuthenticationService
 {
-    public interface IAuthenticationService
-    {
-         Task<TokenResponse> CreateAccessTokenAsync(string email, string password);
-         Task<TokenResponse> RefreshTokenAsync(string refreshToken, string userEmail);
-         void RevokeRefreshToken(string refreshToken);
-    }
+	Task<TokenResponse> CreateAccessTokenAsync(string email, string password);
+	Task<TokenResponse> RefreshTokenAsync(string refreshToken, string userEmail);
+	void RevokeRefreshToken(string refreshToken, string userEmail);
 }

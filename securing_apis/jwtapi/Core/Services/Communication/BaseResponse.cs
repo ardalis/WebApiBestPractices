@@ -1,14 +1,13 @@
-namespace JWTAPI.Core.Services.Communication
-{
-    public abstract class BaseResponse
-    {
-        public bool Success { get; protected set; }
-        public string Message { get; protected set; }
+﻿namespace JWTAPI.Core.Services.Communication;
 
-        public BaseResponse(bool success, string message)
-        {
-            Success = success;
-            Message = message;
-        }
-    }
+public abstract class BaseResponse
+{
+	public bool Success { get; protected set; }
+	public string Message { get; protected set; }
+
+	public BaseResponse(bool success, string message)
+	{
+		Success = success;
+		Message = message;
+	}
 }

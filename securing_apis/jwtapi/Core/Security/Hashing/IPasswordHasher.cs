@@ -1,8 +1,7 @@
-namespace JWTAPI.Core.Security.Hashing
+﻿namespace JWTAPI.Core.Security.Hashing;
+
+public interface IPasswordHasher
 {
-    public interface IPasswordHasher
-    {
-        string HashPassword(string password);
-        bool PasswordMatches(string providedPassword, string passwordHash);
-    }
+	string HashPassword(string password);
+	bool PasswordMatches(string providedPassword, string passwordHash);
 }

@@ -1,98 +1,127 @@
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using JWTAPI.Core.Models;
 using JWTAPI.Core.Security.Hashing;
 using JWTAPI.Core.Security.Tokens;
 using Microsoft.Extensions.Options;
 
-namespace JWTAPI.Security.Tokens
+namespace JWTAPI.Security.Tokens;
+
+public class TokenHandler : ITokenHandler
 {
-    public class TokenHandler : ITokenHandler
-    {
-        private readonly ISet<RefreshToken> _refreshTokens = new HashSet<RefreshToken>();
+	private readonly ISet<RefreshTokenWithEmail> _refreshTokens = new HashSet<RefreshTokenWithEmail>();
 
-        private readonly TokenOptions _tokenOptions;
-        private readonly SigningConfigurations _signingConfigurations;
-        private readonly IPasswordHasher _passwordHaser;
+	private readonly TokenOptions _tokenOptions;
+	private readonly SigningConfigurations _signingConfigurations;
+	private readonly IPasswordHasher _passwordHasher;
 
-        public TokenHandler(IOptions<TokenOptions> tokenOptionsSnapshot, SigningConfigurations signingConfigurations, IPasswordHasher passwordHaser)
-        {
-            _passwordHaser = passwordHaser;
-            _tokenOptions = tokenOptionsSnapshot.Value;
-            _signingConfigurations = signingConfigurations;
-        }
+	public TokenHandler(IOptions<TokenOptions> tokenOptionsSnapshot,
+		SigningConfigurations signingConfigurations,
+		IPasswordHasher passwordHasher)
+	{
+		_passwordHasher = passwordHasher;
+		_tokenOptions = tokenOptionsSnapshot.Value;
+		_signingConfigurations = signingConfigurations;
+	}
 
-        public AccessToken CreateAccessToken(User user)
-        {
-            var refreshToken = BuildRefreshToken();
-            var accessToken = BuildAccessToken(user, refreshToken);
-            _refreshTokens.Add(refreshToken);
+	public AccessToken CreateAccessToken(User user)
+	{
+		var refreshToken = BuildRefreshToken();
+		var accessToken = BuildAccessToken(user, refreshToken);
+		_refreshTokens.Add(new RefreshTokenWithEmail
+		{
+			Email = user.Email,
+			RefreshToken = refreshToken
+		});
 
-            return accessToken;
-        }
+		return accessToken;
+	}
 
-        public RefreshToken TakeRefreshToken(string token)
-        {
-            if (string.IsNullOrWhiteSpace(token))
-                return null;
+	public RefreshToken TakeRefreshToken(string token, string email)
+	{
+		if (string.IsNullOrWhiteSpace(token))
+			return null;
+		if (string.IsNullOrWhiteSpace(email))
+			return null;
 
-            var refreshToken = _refreshTokens.SingleOrDefault(t => t.Token == token);
-            if (refreshToken != null)
-                _refreshTokens.Remove(refreshToken);
+		var refreshTokenWithEmail = _refreshTokens
+			.SingleOrDefault(rt => rt.RefreshToken.Token == token &&
+														 rt.Email == email);
 
-            return refreshToken;
-        }
+		if (refreshTokenWithEmail == null) return null;
 
-        public void RevokeRefreshToken(string token)
-        {
-            TakeRefreshToken(token);
-        }
+		_refreshTokens.Remove(refreshTokenWithEmail);
 
-        private RefreshToken BuildRefreshToken()
-        {
-            var refreshToken = new RefreshToken
-            (
-                token : _passwordHaser.HashPassword(Guid.NewGuid().ToString()),
-                expiration : DateTime.UtcNow.AddSeconds(_tokenOptions.RefreshTokenExpiration).Ticks
-            );
+		return refreshTokenWithEmail.RefreshToken;
 
-            return refreshToken;
-        }
+		//var key = _refreshTokens.SingleOrDefault(entry => entry.Value.Token == token)!.Key;
+		//if(key != null)
+		//{
+		//	_refreshTokens.Remove(key);
+		//}
 
-        private AccessToken BuildAccessToken(User user, RefreshToken refreshToken)
-        {
-            var accessTokenExpiration = DateTime.UtcNow.AddSeconds(_tokenOptions.AccessTokenExpiration);
+		//var refreshToken = _refreshTokens.Values.SingleOrDefault(t => t.Token == token);
+		//if (refreshToken != null)
+		//	_refreshTokens.Remove(refreshToken);
 
-            var securityToken = new JwtSecurityToken
-            (
-                issuer : _tokenOptions.Issuer,
-                audience : _tokenOptions.Audience,
-                claims : GetClaims(user),
-                expires : accessTokenExpiration,
-                notBefore : DateTime.UtcNow,
-                signingCredentials : _signingConfigurations.SigningCredentials
-            );
+		//return refreshToken;
+	}
 
-            var handler = new JwtSecurityTokenHandler();
-            var accessToken = handler.WriteToken(securityToken);
+	public void RevokeRefreshToken(string token, string email)
+	{
+		TakeRefreshToken(token, email);
+	}
 
-            return new AccessToken(accessToken, accessTokenExpiration.Ticks, refreshToken);
-        }
+	private RefreshToken BuildRefreshToken()
+	{
+		var refreshToken = new RefreshToken
+		(
+				token: _passwordHasher.HashPassword(Guid.NewGuid().ToString()),
+				expiration: DateTime.UtcNow.AddSeconds(_tokenOptions.RefreshTokenExpiration).Ticks
+		);
 
-        private IEnumerable<Claim> GetClaims(User user)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email)
-            };
+		return refreshToken;
+	}
 
-            foreach (var userRole in user.UserRoles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, userRole.Role.Name));
-            }
+	private class RefreshTokenWithEmail
+	{
+		public string Email { get; set; }
+		public RefreshToken RefreshToken { get; set; }
+	}
 
-            return claims;
-        }
-    }
+	private AccessToken BuildAccessToken(User user, RefreshToken refreshToken)
+	{
+		var accessTokenExpiration = DateTime.UtcNow.AddSeconds(_tokenOptions.AccessTokenExpiration);
+
+		var securityToken = new JwtSecurityToken
+		(
+				issuer: _tokenOptions.Issuer,
+				audience: _tokenOptions.Audience,
+				claims: GetClaims(user),
+				expires: accessTokenExpiration,
+				notBefore: DateTime.UtcNow,
+				signingCredentials: _signingConfigurations.SigningCredentials
+		);
+
+		var handler = new JwtSecurityTokenHandler();
+		var accessToken = handler.WriteToken(securityToken);
+
+		return new AccessToken(accessToken, accessTokenExpiration.Ticks, refreshToken);
+	}
+
+	private IEnumerable<Claim> GetClaims(User user)
+	{
+		var claims = new List<Claim>
+					{
+							new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+							new Claim(JwtRegisteredClaimNames.Sub, user.Email)
+					};
+
+		foreach (var userRole in user.UserRoles)
+		{
+			claims.Add(new Claim(ClaimTypes.Role, userRole.Role.Name));
+		}
+
+		return claims;
+	}
 }

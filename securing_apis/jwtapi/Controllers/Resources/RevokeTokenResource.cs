@@ -1,10 +1,11 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace JWTAPI.Controllers.Resources
+namespace JWTAPI.Controllers.Resources;
+
+public class RevokeTokenResource
 {
-    public class RevokeTokenResource
-    {
-        [Required]
-        public string Token { get; set; }
-    }
+	[Required]
+	public string Token { get; set; }
+	[Required]
+	public string EmailAddress { get; set; }
 }

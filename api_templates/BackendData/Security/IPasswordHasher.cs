@@ -1,4 +1,4 @@
-﻿namespace BackendData;
+﻿namespace BackendData.Security;
 
 public interface IPasswordHasher
 {

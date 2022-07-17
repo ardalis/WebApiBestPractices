@@ -1,4 +1,6 @@
-﻿namespace BackendData.DataAccess;
+﻿using BackendData.Security;
+
+namespace BackendData.DataAccess;
 
 public static class SeedData
 {
@@ -35,7 +37,7 @@ public static class SeedData
 
 		var users = new List<User>
 		{
-			new User("test@test.com", hasher.HashPassword("Pass@word1")) { Id = id++}
+			new User("test@test.com", hasher.HashPassword("123456")) { Id = id++}
 		};
 
 		return users;

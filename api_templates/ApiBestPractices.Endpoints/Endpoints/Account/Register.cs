@@ -1,5 +1,6 @@
 ﻿using Ardalis.ApiEndpoints;
 using BackendData;
+using BackendData.Security;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiBestPractices.Endpoints.Endpoints.Account;
@@ -21,12 +22,16 @@ public class Register : EndpointBaseAsync
 	/// <summary>
 	/// Creates a new User
 	/// </summary>
-	[HttpPost("[namespace]")]
-	[ProducesResponseType(StatusCodes.Status201Created)]
+	[HttpPost("[namespace]/Register")]
+	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(StatusCodes.Status400BadRequest)]
 	public override async Task<ActionResult> HandleAsync(RegisterUserCommand request,
 		CancellationToken cancellationToken = default)
 	{
+		var existingUsers = await _repository.ListByExpressionAsync(u => u.Email == request.Email, cancellationToken);
+
+		if (existingUsers.Any()) return BadRequest("User with email already exists");
+
 		var user = new User(request.Email, _passwordHasher.HashPassword(request.Password));
 
 		await _repository.AddAsync(user, cancellationToken);

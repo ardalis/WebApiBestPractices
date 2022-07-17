@@ -3,6 +3,8 @@ using ApiBestPractices.Endpoints.Endpoints.Authors;
 using Ardalis.RouteAndBodyModelBinding;
 using BackendData;
 using BackendData.DataAccess;
+using BackendData.Security;
+using BackendData.Services;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -28,6 +30,13 @@ builder.Services.AddControllers(options =>
 builder.Services.AddAutoMapper(typeof(List));
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<ITokenFactory, TokenFactory>();
+
+builder.Services.Configure<TokenOptions>(builder.Configuration.GetSection("TokenOptions"));
+var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+var signingConfigurations = new SigningConfigurations(tokenOptions.Secret);
+builder.Services.AddSingleton(signingConfigurations);
 
 builder.Services.AddSwaggerGen(c =>
 {

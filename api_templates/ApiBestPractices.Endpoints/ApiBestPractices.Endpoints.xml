@@ -9,6 +9,11 @@
             Source: https://docs.microsoft.com/en-us/dotnet/core/extensions/scoped-service
             </summary>
         </member>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Account.Login.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Account.LoginUserCommand,System.Threading.CancellationToken)">
+            <summary>
+            Authenticates a user and returns a JWT Token
+            </summary>
+        </member>
         <member name="M:ApiBestPractices.Endpoints.Endpoints.Account.Register.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Account.RegisterUserCommand,System.Threading.CancellationToken)">
             <summary>
             Creates a new User

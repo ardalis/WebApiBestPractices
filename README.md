@@ -62,6 +62,8 @@ Below are a selection of links I referenced when building this course.
 - [Secure .NET Microservices](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/secure-net-microservices-web-applications/#authenticate-with-bearer-tokens)
 - [IANA Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xml)
 - [Content Negotiation in Web API](https://code-maze.com/content-negotiation-web-api/)
+- [5 Ways to Set the URLs for an ASP.NET Core App](https://andrewlock.net/5-ways-to-set-the-urls-for-an-aspnetcore-app/)
+- [Enforce HTTPS Correctly in ASP.NET Core APIs](https://recaffeinate.co/post/enforce-https-aspnetcore-api/)
 
 ### GitHub Repos
 

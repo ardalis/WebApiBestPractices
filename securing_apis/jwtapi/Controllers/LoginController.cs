@@ -22,7 +22,8 @@ public class AuthController : Controller
 	[HttpPost]
 	public async Task<IActionResult> LoginAsync([FromBody] UserCredentialsResource userCredentials)
 	{
-		var response = await _authenticationService.CreateAccessTokenAsync(userCredentials.Email, userCredentials.Password);
+		var response = await _authenticationService.CreateAccessTokenAsync(userCredentials.Email,
+			userCredentials.Password);
 		if (!response.Success)
 		{
 			return BadRequest(response.Message);

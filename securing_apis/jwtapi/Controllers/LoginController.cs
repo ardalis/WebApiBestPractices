@@ -22,11 +22,6 @@ public class AuthController : Controller
 	[HttpPost]
 	public async Task<IActionResult> LoginAsync([FromBody] UserCredentialsResource userCredentials)
 	{
-		if (!ModelState.IsValid)
-		{
-			return BadRequest(ModelState);
-		}
-
 		var response = await _authenticationService.CreateAccessTokenAsync(userCredentials.Email, userCredentials.Password);
 		if (!response.Success)
 		{
@@ -41,11 +36,6 @@ public class AuthController : Controller
 	[HttpPost]
 	public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenResource refreshTokenResource)
 	{
-		if (!ModelState.IsValid)
-		{
-			return BadRequest(ModelState);
-		}
-
 		var response = await _authenticationService.RefreshTokenAsync(refreshTokenResource.Token, 
 			refreshTokenResource.UserEmail);
 		if (!response.Success)
@@ -61,11 +51,6 @@ public class AuthController : Controller
 	[HttpPost]
 	public IActionResult RevokeToken([FromBody] RevokeTokenResource revokeTokenResource)
 	{
-		if (!ModelState.IsValid)
-		{
-			return BadRequest(ModelState);
-		}
-
 		_authenticationService.RevokeRefreshToken(revokeTokenResource.RefreshToken, revokeTokenResource.EmailAddress);
 		return NoContent();
 	}

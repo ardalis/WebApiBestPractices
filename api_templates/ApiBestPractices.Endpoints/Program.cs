@@ -27,6 +27,7 @@ builder.Services.AddControllers(options =>
 	.AddNewtonsoftJson(); // needed for JsonPatch support
 builder.Services.AddAutoMapper(typeof(List));
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
+builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -60,14 +61,15 @@ if (!app.Environment.IsDevelopment())
 {
 	app.UseExceptionHandler("/Home/Error");
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+	//app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(app => app.MapControllers());
@@ -81,7 +83,8 @@ app.Run();
 
 async Task EnsureDb(IServiceProvider services, ILogger logger)
 {
-	using var db = services.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
+	using var db = services.CreateScope()
+		.ServiceProvider.GetRequiredService<AppDbContext>();
 	if (db.Database.IsRelational())
 	{
 		logger.LogInformation("Ensuring database exists and is up to date at connection string '{connectionString}'", connectionString);

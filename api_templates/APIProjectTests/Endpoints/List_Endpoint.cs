@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Ardalis.HttpClientTestExtensions;
 using BackendData.DataAccess;
@@ -24,25 +25,33 @@ public class List_Endpoint
 	{
 		_testOutputHelper = testOutputHelper;
 		_logger = XUnitLogger.CreateLogger<Swagger>(_testOutputHelper);
-		_client = new WebApiApplication(_testOutputHelper).CreateClient(new() { BaseAddress = new Uri("https://localhost")} );
+		_client = new WebApiApplication(_testOutputHelper).CreateClient(); // (new() { BaseAddress = new Uri("https://localhost")} );
 	}
 
 	[Fact]
-	public async Task GetAuthors()
+	public async Task ReturnsSeededAuthors()
 	{
-		var response = await _client.GetAsync("/api/Authors");
+		// Arrange (done in WebApiApplication)
 
-		_logger.LogInformation($"URL: {response.RequestMessage.RequestUri.AbsoluteUri}");
-
+		// Act
+		var response = await _client.GetAsync("/Authors");
 		response.EnsureSuccessStatusCode();
 		Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+		var stringResult = await response.Content.ReadAsStringAsync();
+		_logger.LogInformation(stringResult);
+		var result = JsonSerializer.Deserialize<List<AuthorListResult>>(stringResult);
 
-		var result = await _client.GetAndDeserialize<IEnumerable<AuthorListResult>>(Routes.Authors.List());
+		// Assert
 		Assert.NotNull(result);
 		Assert.Equal(SeedData.Authors().Count, result.Count());
-
 	}
 
+	[Fact]
+	public async Task ReturnsSeededAuthorsRefactored()
+	{
+		var result = await _client.GetAndDeserialize<IEnumerable<AuthorListResult>>(Routes.Authors.List());
+		
+		Assert.NotNull(result);
+		Assert.Equal(SeedData.Authors().Count, result.Count());
+	}
 }
-
-

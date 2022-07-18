@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "minimal", "api_templates\mi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendData", "api_templates\BackendData\BackendData.csproj", "{00DE605E-ACE3-46E6-B5B3-C2D283DA3DAB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIProjectTests", "api_templates\APIProjectTests\APIProjectTests.csproj", "{55920625-28C8-4C64-A281-C57C0F9A9336}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIEndpointsProjectTests", "api_templates\APIProjectTests\APIEndpointsProjectTests.csproj", "{55920625-28C8-4C64-A281-C57C0F9A9336}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBestPractices.Endpoints", "api_templates\ApiBestPractices.Endpoints\ApiBestPractices.Endpoints.csproj", "{5586351A-B0F3-4577-AFDB-1FDE50B8E03D}"
 EndProject

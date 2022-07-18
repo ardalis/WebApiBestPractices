@@ -3,6 +3,8 @@ using ApiBestPractices.Endpoints.Endpoints.Authors;
 using Ardalis.RouteAndBodyModelBinding;
 using BackendData;
 using BackendData.DataAccess;
+using BackendData.Security;
+using BackendData.Services;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -27,6 +29,17 @@ builder.Services.AddControllers(options =>
 	.AddNewtonsoftJson(); // needed for JsonPatch support
 builder.Services.AddAutoMapper(typeof(List));
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
+builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<ITokenFactory, TokenFactory>();
+
+builder.Services.Configure<TokenOptions>(builder.Configuration.GetSection("TokenOptions"));
+var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+var signingConfigurations = new SigningConfigurations(tokenOptions.Secret);
+builder.Services.AddSingleton(signingConfigurations);
+
+builder.Services.ConfigureJwtAuthentication(tokenOptions, signingConfigurations);
+
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -35,6 +48,29 @@ builder.Services.AddSwaggerGen(c =>
 	c.UseApiEndpoints();
 	c.OperationFilter<RouteAndBodyOperationFilter>();
 	//c.DocumentFilter<JsonPatchDocumentFilter>();
+	c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+	{
+		In = ParameterLocation.Header,
+		Description = "Please enter a valid token",
+		Name = "Authorization",
+		Type = SecuritySchemeType.Http,
+		BearerFormat = "JWT",
+		Scheme = "Bearer"
+	});
+	c.AddSecurityRequirement(new OpenApiSecurityRequirement
+		{
+				{
+						new OpenApiSecurityScheme
+						{
+								Reference = new OpenApiReference
+								{
+										Type=ReferenceType.SecurityScheme,
+										Id="Bearer"
+								}
+						},
+						new string[]{}
+				}
+		});
 });
 
 builder.Services.AddHostedService<DataConsistencyWorker>();
@@ -60,14 +96,15 @@ if (!app.Environment.IsDevelopment())
 {
 	app.UseExceptionHandler("/Home/Error");
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+	//app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(app => app.MapControllers());
@@ -81,7 +118,8 @@ app.Run();
 
 async Task EnsureDb(IServiceProvider services, ILogger logger)
 {
-	using var db = services.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
+	using var db = services.CreateScope()
+		.ServiceProvider.GetRequiredService<AppDbContext>();
 	if (db.Database.IsRelational())
 	{
 		logger.LogInformation("Ensuring database exists and is up to date at connection string '{connectionString}'", connectionString);

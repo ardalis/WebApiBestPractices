@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackendData.DataAccess;
 
@@ -21,13 +22,21 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
     return await _dbContext.Set<T>().FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
   }
 
-  public async Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken)
-  {
-    return await _dbContext.Set<T>().ToListAsync(cancellationToken);
-  }
+	public async Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken)
+	{
+		return await _dbContext.Set<T>().ToListAsync(cancellationToken);
+	}
 
-  /// <inheritdoc />
-  public async Task<IReadOnlyList<T>> ListAllAsync(
+	public async Task<IReadOnlyList<T>> ListByExpressionAsync(Expression<Func<T,bool>> filter, 
+		CancellationToken cancellationToken)
+	{
+		return await _dbContext.Set<T>()
+			.Where(filter)
+			.ToListAsync(cancellationToken);
+	}
+
+	/// <inheritdoc />
+	public async Task<IReadOnlyList<T>> ListAllAsync(
     int perPage,
     int page,
           CancellationToken cancellationToken)

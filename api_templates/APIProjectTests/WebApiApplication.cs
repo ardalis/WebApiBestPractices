@@ -56,7 +56,7 @@ class WebApiApplication : WebApplicationFactory<Program>
 				}
 				catch (Exception ex)
 				{
-					//Log errors or do anything you think it's needed
+					//Log errors or do anything you think is needed
 					throw;
 				}
 			}

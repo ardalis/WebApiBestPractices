@@ -2,7 +2,7 @@
 
 public static class Routes
 {
-	private const string BaseRoute = "api";
+	private const string BaseRoute = "";
 
 	public static class Authors
 	{

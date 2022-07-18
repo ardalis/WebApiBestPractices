@@ -20,4 +20,11 @@ public static class Routes
 
 		public static string Delete(int id) => $"{BaseRoute}/{id}";
 	}
+
+	public static class Account
+	{
+		private const string BaseRoute = Routes.BaseRoute + "/account";
+
+		public static string Register() => BaseRoute + "/register";
+	}
 }

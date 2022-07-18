@@ -24,7 +24,7 @@
             Creates a new Author
             </summary>
         </member>
-        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Delete.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.DeleteAuthorRequest,System.Threading.CancellationToken)">
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Delete.HandleAsync(System.Int32,System.Threading.CancellationToken)">
             <summary>
             Deletes an Author
             </summary>

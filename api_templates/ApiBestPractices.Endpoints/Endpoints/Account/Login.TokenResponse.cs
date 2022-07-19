@@ -4,5 +4,5 @@ namespace ApiBestPractices.Endpoints.Endpoints.Account;
 
 public class TokenResponse
 {
-	public AccessToken Token { get; set; }
+	public AccessToken AccessToken { get; set; }
 }

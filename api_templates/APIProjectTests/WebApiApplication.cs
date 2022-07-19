@@ -39,9 +39,11 @@ class WebApiApplication : WebApplicationFactory<Program>
 
 			services.Remove(descriptor);
 
+			string dbName = "InMemoryDbForTesting" + Guid.NewGuid().ToString();
+
 			services.AddDbContext<AppDbContext>(options =>
 			{
-				options.UseInMemoryDatabase("InMemoryDbForTesting");
+				options.UseInMemoryDatabase(dbName);
 			});
 
 			// Create a new service provider.

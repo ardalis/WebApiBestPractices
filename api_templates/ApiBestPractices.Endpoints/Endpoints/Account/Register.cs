@@ -25,7 +25,7 @@ public class Register : EndpointBaseAsync
 	[HttpPost("[namespace]/Register")]
 	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(StatusCodes.Status400BadRequest)]
-	public override async Task<ActionResult> HandleAsync(RegisterUserCommand request,
+	public override async Task<ActionResult> HandleAsync([FromBody] RegisterUserCommand request,
 		CancellationToken cancellationToken = default)
 	{
 		var existingUsers = await _repository.ListByExpressionAsync(u => u.Email == request.Email, cancellationToken);

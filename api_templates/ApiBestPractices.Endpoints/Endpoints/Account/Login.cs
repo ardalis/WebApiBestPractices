@@ -40,7 +40,7 @@ public class Login : EndpointBaseAsync
 			return BadRequest("Invalid credentials.");
 		}
 
-		var response = new TokenResponse() { Token = tokenResult.Value };
+		var response = new TokenResponse() { AccessToken = tokenResult.Value };
 
 		return Ok(response);
 	}

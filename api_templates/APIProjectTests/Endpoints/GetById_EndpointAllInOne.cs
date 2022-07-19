@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using ApiBestPractices.Endpoints.Endpoints.Authors;
@@ -18,7 +15,7 @@ using Xunit.Abstractions;
 namespace APIProjectTests.Endpoints;
 
 // Do everything in the test method
-// Works, but results in a lot of duplicate when you have more than one test
+// Works, but results in a lot of duplication when you have more than one test
 public class GetById_EndpointAllInOne
 {
 	private readonly ITestOutputHelper _testOutputHelper;

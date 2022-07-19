@@ -11,7 +11,7 @@ public class DocumentAuthorizationHandler :
 		SameAuthorRequirement requirement,
 		Document resource)
 	{
-		if (context.User.Identity?.Name == resource.Author)
+		if (context.User.Identity?.Name!.ToLower() == resource.Author)
 		{
 			context.Succeed(requirement);
 		}

@@ -11,7 +11,7 @@ public class DocumentAuthorizationCrudHandler :
 																								 OperationAuthorizationRequirement requirement,
 																								 Document resource)
 	{
-		if (context.User.Identity?.Name == resource.Author &&
+		if (context.User.Identity?.Name!.ToLower() == resource.Author &&
 				requirement.Name == Operations.Read.Name)
 		{
 			context.Succeed(requirement);

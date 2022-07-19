@@ -37,6 +37,10 @@ Below are a selection of links I referenced when building this course.
 - [How to use Created or CreatedAtAction or CreatedAtRoute in ASP.NET Core API](https://stackoverflow.com/questions/47939945/how-to-use-created-or-createdataction-createdatroute-in-an-asp-net-core-api)
 - [What are the main differences between JWT and OAuth Authentication](https://stackoverflow.com/questions/39909419/what-are-the-main-differences-between-jwt-and-oauth-authentication)
 - [Pagination Response Payload from a RESTful API](https://stackoverflow.com/questions/12168624/pagination-response-payload-from-a-restful-api)
+- [Swagger unexpected API PATCH action documentation of JsonPatchDocument in example request body](https://stackoverflow.com/questions/65599406/swagger-unexpected-api-patch-action-documentation-of-jsonpatchdocument-in-exampl)
+- [What should response of RESTful API for Patch HTTP Method?](https://stackoverflow.com/questions/54666244/what-should-response-of-rest-full-api-for-patch-http-method)
+- [Verifying JWT Signed with the RS 256 Algorithm using public key in C#](https://stackoverflow.com/questions/34403823/verifying-jwt-signed-with-the-rs256-algorithm-using-public-key-in-c-sharp)
+- [What is the meaning of ValidateIssuer and ValidateAudience in JWT?](https://stackoverflow.com/questions/70597009/what-is-the-meaning-of-validateissuer-and-validateaudience-in-jwt)
 
 ### Software Engineering StackExchange Discussions
 
@@ -57,11 +61,26 @@ Below are a selection of links I referenced when building this course.
 - [PUT vs POST](https://www.keycdn.com/support/put-vs-post)
 - [GitHub API: Pages](https://docs.github.com/en/rest/pages)
 - [GitHub API: Traversing with Pagination](https://docs.github.com/en/rest/guides/traversing-with-pagination)
+- [JWT Debugger](https://jwt.io/)
 - [Anatomy of a JWT](https://fusionauth.io/learn/expert-advice/tokens/anatomy-of-jwt)
 - [JWT Security](https://owasp.org/www-chapter-belgium/assets/2021/2021-02-18/JWT-Security.pdf)
+- [Getting API Security Right](https://pragmaticwebsecurity.com/files/talks/gettingAPIsecurityright.pdf)
+- [JSON Web Tokens Security Cheat Sheet](https://pragmaticwebsecurity.com/files/cheatsheets/jwt.pdf)
 - [Secure .NET Microservices](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/secure-net-microservices-web-applications/#authenticate-with-bearer-tokens)
+- [Implementing JWT Authentication in ASP.NET Core 5](https://www.codemag.com/Article/2105051/Implementing-JWT-Authentication-in-ASP.NET-Core-5)
 - [IANA Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xml)
 - [Content Negotiation in Web API](https://code-maze.com/content-negotiation-web-api/)
+- [5 Ways to Set the URLs for an ASP.NET Core App](https://andrewlock.net/5-ways-to-set-the-urls-for-an-aspnetcore-app/)
+- [Enforce HTTPS Correctly in ASP.NET Core APIs](https://recaffeinate.co/post/enforce-https-aspnetcore-api/)
+- [Simplify your ASP.NET Core API models with C# Records](https://www.daveabrock.com/2020/11/18/simplify-api-models-with-records/)
+- [JSON Patch](https://jsonpatch.com/)
+- [How to use JSON Patch in .NET Core](https://garywoodfine.com/how-to-use-jsonpatch-in-net-core/)
+- [JSON Patch Support with Swagger and ASP.NET Core 3.1](https://michael-mckenna.com/swagger-with-asp-net-core-3-1-json-patch/)
+- [ASP.NET Core Web API - Post, Put, Delete](https://code-maze.com/net-core-web-development-part6/)
+- [OWASP JSON Web Token Cheat Sheet for Java](https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html)
+- [Hacking JWT Tokens: Brute Forcing Weak Signing Key JWT Cracker](https://blog.pentesteracademy.com/hacking-jwt-tokens-bruteforcing-weak-signing-key-jwt-cracker-5d49d34c44)
+- [JWT Authentication with Asymmetric Encryption using certificates in ASP.NET Core](https://dev.to/eduardstefanescu/jwt-authentication-with-asymmetric-encryption-using-certificates-in-asp-net-core-2o7e)
+- [The Hard Parts of JWT Security Nobody Talks About](https://www.pingidentity.com/en/resources/blog/post/jwt-security-nobody-talks-about.html)
 
 ### GitHub Repos
 
@@ -71,3 +90,6 @@ Below are a selection of links I referenced when building this course.
 - [Minimal API Playground](https://github.com/DamianEdwards/MinimalApiPlayground)
 - [Swashbuckle.WebApi](https://github.com/domaindrivendev/Swashbuckle.WebApi/issues/1230)
 - [JWT-API Sample](https://github.com/evgomes/jwt-api)
+- [JWT_Tool Wiki](https://github.com/ticarpi/jwt_tool/wiki#best-practice)
+- [jwt-cracker](https://github.com/lmammino/jwt-cracker)
+- [JwtAuthentication](https://github.com/StefanescuEduard/JwtAuthentication)

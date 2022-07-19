@@ -5,17 +5,18 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace BackendData.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220404201343_Initial")]
-    partial class Initial
+    [Migration("20220717191514_AddUsers")]
+    partial class AddUsers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.11");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
 
             modelBuilder.Entity("BackendData.Author", b =>
                 {
@@ -25,12 +26,15 @@ namespace BackendData.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PluralsightUrl")
+                        .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TwitterAlias")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -52,6 +56,27 @@ namespace BackendData.Migrations
                             PluralsightUrl = "https://www.pluralsight.com/authors/julie-lerman",
                             TwitterAlias = "julialerman"
                         });
+                });
+
+            modelBuilder.Entity("BackendData.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

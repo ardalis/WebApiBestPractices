@@ -1,25 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Ardalis.HttpClientTestExtensions;
+using ApiBestPractices.Endpoints.Endpoints.Authors;
 using BackendData.DataAccess;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace APIProjectTests.Endpoints;
 
-internal record AuthorListResult(int Id, string Name, string TwitterAlias);
-public class List_Endpoint
+// Do everything in the test method
+// Works, but results in a lot of duplicate when you have more than one test
+public class GetById_Endpoint
 {
 	private readonly ITestOutputHelper _testOutputHelper;
 	private readonly ILogger _logger;
 	private readonly HttpClient _client;
+	private readonly int _testAuthorId = 1;
 
-	public List_Endpoint(ITestOutputHelper testOutputHelper)
+	public GetById_Endpoint(ITestOutputHelper testOutputHelper)
 	{
 		_testOutputHelper = testOutputHelper;
 		_logger = XUnitLogger.CreateLogger<Swagger>(_testOutputHelper);
@@ -27,29 +34,20 @@ public class List_Endpoint
 	}
 
 	[Fact]
-	public async Task ReturnsSeededAuthors()
+	public async Task ReturnsSeededAuthorWithId1()
 	{
 		// Arrange (done in WebApiApplication)
 
 		// Act
-		var response = await _client.GetAsync("/Authors");
+		var response = await _client.GetAsync(Routes.Authors.Get(_testAuthorId));
 		response.EnsureSuccessStatusCode();
-		Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 		var stringResult = await response.Content.ReadAsStringAsync();
 		_logger.LogInformation(stringResult);
-		var result = JsonSerializer.Deserialize<List<AuthorListResult>>(stringResult);
+		var result = JsonSerializer.Deserialize<AuthorDto>(stringResult,
+			JsonOptionConstants.SerializerOptions);
 
 		// Assert
 		Assert.NotNull(result);
-		Assert.Equal(SeedData.Authors().Count, result.Count());
-	}
-
-	[Fact]
-	public async Task ReturnsSeededAuthorsRefactored()
-	{
-		var result = await _client.GetAndDeserialize<IEnumerable<AuthorListResult>>(Routes.Authors.List());
-
-		Assert.NotNull(result);
-		Assert.Equal(SeedData.Authors().Count, result.Count());
+		Assert.Equal("Steve Smith", result.Name);
 	}
 }

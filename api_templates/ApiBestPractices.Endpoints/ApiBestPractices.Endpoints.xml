@@ -9,12 +9,22 @@
             Source: https://docs.microsoft.com/en-us/dotnet/core/extensions/scoped-service
             </summary>
         </member>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Account.Login.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Account.LoginUserCommand,System.Threading.CancellationToken)">
+            <summary>
+            Authenticates a user and returns a JWT Token
+            </summary>
+        </member>
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Account.Register.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Account.RegisterUserCommand,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new User
+            </summary>
+        </member>
         <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Create.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.CreateAuthorCommand,System.Threading.CancellationToken)">
             <summary>
             Creates a new Author
             </summary>
         </member>
-        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Delete.HandleAsync(ApiBestPractices.Endpoints.Endpoints.Authors.DeleteAuthorRequest,System.Threading.CancellationToken)">
+        <member name="M:ApiBestPractices.Endpoints.Endpoints.Authors.Delete.HandleAsync(System.Int32,System.Threading.CancellationToken)">
             <summary>
             Deletes an Author
             </summary>

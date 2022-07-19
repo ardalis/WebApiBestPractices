@@ -11,15 +11,13 @@ using Xunit.Abstractions;
 
 namespace APIProjectTests;
 
-class WebApiApplication : WebApplicationFactory<Program>
+public class WebApiApplication : WebApplicationFactory<Program>
 {
 	private readonly ITestOutputHelper _testOutputHelper;
-	public SqliteConnection SqliteConnection { get; set; }
 
 	public WebApiApplication(ITestOutputHelper testOutputHelper)
 	{
 		_testOutputHelper = testOutputHelper;
-		SqliteConnection = new SqliteConnection("DataSource=:memory:");
 	}
 
 	protected override IHost CreateHost(IHostBuilder builder)
@@ -39,9 +37,11 @@ class WebApiApplication : WebApplicationFactory<Program>
 
 			services.Remove(descriptor);
 
+			string dbName = "InMemoryDbForTesting" + Guid.NewGuid().ToString();
+
 			services.AddDbContext<AppDbContext>(options =>
 			{
-				options.UseInMemoryDatabase("InMemoryDbForTesting");
+				options.UseInMemoryDatabase(dbName);
 			});
 
 			// Create a new service provider.
@@ -56,7 +56,7 @@ class WebApiApplication : WebApplicationFactory<Program>
 				}
 				catch (Exception ex)
 				{
-					//Log errors or do anything you think it's needed
+					//Log errors or do anything you think is needed
 					throw;
 				}
 			}

@@ -31,6 +31,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.3" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+		<PackageReference Include="Moq" Version="4.18.1" />
 		<PackageReference Include="SQLite" Version="3.13.0" />
 		<PackageReference Include="xunit" Version="2.4.1" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -46,6 +47,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\ApiBestPractices.Endpoints\ApiBestPractices.Endpoints.csproj" />
 		<ProjectReference Include="..\BackendData\BackendData.csproj" />
+		<ProjectReference Include="..\controllers\controllers.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BackendData;
+using controllers.ApiModels;
 using controllers.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -28,6 +29,6 @@ public class ControllerUnitTests
 		var result = await controller.Index(CancellationToken.None);
 		
 		Assert.NotNull(result);
-		Assert.IsType<OkObjectResult>(result);
+		Assert.IsType<ActionResult<List<AuthorDto>>>(result);
 	}
 }

@@ -11,15 +11,13 @@ using Xunit.Abstractions;
 
 namespace APIProjectTests;
 
-class WebApiApplication : WebApplicationFactory<Program>
+public class WebApiApplication : WebApplicationFactory<Program>
 {
 	private readonly ITestOutputHelper _testOutputHelper;
-	public SqliteConnection SqliteConnection { get; set; }
 
 	public WebApiApplication(ITestOutputHelper testOutputHelper)
 	{
 		_testOutputHelper = testOutputHelper;
-		SqliteConnection = new SqliteConnection("DataSource=:memory:");
 	}
 
 	protected override IHost CreateHost(IHostBuilder builder)

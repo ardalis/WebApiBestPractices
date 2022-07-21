@@ -47,7 +47,7 @@ public class List_Endpoint
 	[Fact]
 	public async Task ReturnsSeededAuthorsRefactored()
 	{
-		var result = await _client.GetAndDeserialize<IEnumerable<AuthorListResult>>(Routes.Authors.List());
+		var result = await _client.GetAndDeserializeAsync<IEnumerable<AuthorListResult>>(Routes.Authors.List());
 
 		Assert.NotNull(result);
 		Assert.Equal(SeedData.Authors().Count, result.Count());

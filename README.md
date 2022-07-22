@@ -15,6 +15,7 @@ Below are a selection of links I referenced when building this course.
 - [RFC6797 - HTTP Strict Transport Security](https://datatracker.ietf.org/doc/html/rfc6797)
 - [RFC6819 - Authorization Headers](https://www.rfc-editor.org/rfc/rfc6819#section-5.4.1)
 - [RFC7231 - HTTP 1.1 - Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.2)
+- [RFC7234 - HTTP 1.1 - Caching](https://datatracker.ietf.org/doc/html/rfc7234)
 - [RFC7396 - JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7396)
 - [RFC7807 - Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)
 
@@ -28,6 +29,11 @@ Below are a selection of links I referenced when building this course.
 - [Web APIs - Handle Errors](https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors?view=aspnetcore-6.0)
 - [Enable CORS in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-6.0)
 - [Enforce HTTPS in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0)
+- [Overview of ASP.NET Core Authentication](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-6.0)
+- [Resource-based authorization in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/resourcebased?view=aspnetcore-6.0)
+- [Globalization and localization in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-6.0)
+- [Use scoped services within a BackgroundService](https://docs.microsoft.com/en-us/dotnet/core/extensions/scoped-service)
+- [Response Caching Middleware in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/middleware?view=aspnetcore-6.0)
 
 ### Stack Overflow Discussions
 
@@ -41,6 +47,7 @@ Below are a selection of links I referenced when building this course.
 - [What should response of RESTful API for Patch HTTP Method?](https://stackoverflow.com/questions/54666244/what-should-response-of-rest-full-api-for-patch-http-method)
 - [Verifying JWT Signed with the RS 256 Algorithm using public key in C#](https://stackoverflow.com/questions/34403823/verifying-jwt-signed-with-the-rs256-algorithm-using-public-key-in-c-sharp)
 - [What is the meaning of ValidateIssuer and ValidateAudience in JWT?](https://stackoverflow.com/questions/70597009/what-is-the-meaning-of-validateissuer-and-validateaudience-in-jwt)
+- [Autofac Propert Injection in Base Class](https://stackoverflow.com/questions/26808072/autofac-property-injection-in-base-class)
 
 ### Software Engineering StackExchange Discussions
 
@@ -81,6 +88,11 @@ Below are a selection of links I referenced when building this course.
 - [Hacking JWT Tokens: Brute Forcing Weak Signing Key JWT Cracker](https://blog.pentesteracademy.com/hacking-jwt-tokens-bruteforcing-weak-signing-key-jwt-cracker-5d49d34c44)
 - [JWT Authentication with Asymmetric Encryption using certificates in ASP.NET Core](https://dev.to/eduardstefanescu/jwt-authentication-with-asymmetric-encryption-using-certificates-in-asp-net-core-2o7e)
 - [The Hard Parts of JWT Security Nobody Talks About](https://www.pingidentity.com/en/resources/blog/post/jwt-security-nobody-talks-about.html)
+- [Six Ways to Organize Minimal APIs in ASP.NET Core Applications](http://www.binaryintellect.net/articles/f3dcbb45-fa8b-4e12-b284-f0cd2e5b2dcf.aspx)
+- [From MVC to Minimal APIs with ASP.NET Core 6.0](https://benfoster.io/blog/mvc-to-minimal-apis-aspnet-6/)
+- [Writing decoupled code with MediatR: The Mediator Pattern](https://samwalpole.com/writing-decoupled-code-with-mediatr-the-mediator-pattern)
+- [Middleware for Response Caching in .NET Core Web APIs](https://thecodeblogger.com/2021/06/06/middleware-for-response-caching-in-net-core-web-apis/)
+- [Response Caching in ASP.NET Core](https://code-maze.com/aspnetcore-response-caching/)
 
 ### GitHub Repos
 
@@ -93,3 +105,4 @@ Below are a selection of links I referenced when building this course.
 - [JWT_Tool Wiki](https://github.com/ticarpi/jwt_tool/wiki#best-practice)
 - [jwt-cracker](https://github.com/lmammino/jwt-cracker)
 - [JwtAuthentication](https://github.com/StefanescuEduard/JwtAuthentication)
+- [IdentityServer BFF Samples](https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v5/BFF/JsBffSample)

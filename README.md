@@ -2,7 +2,7 @@
 
 Resources related to my Pluralsight course.
 
-[Watch the course - ASP.NET Core 6 Web API: Best Practices](https://www.pluralsight.com/courses/aspdotnet-core-6-web-api-best-practices)
+[Watch the course: ASP.NET Core 6 Web API: Best Practices](https://www.pluralsight.com/courses/aspdotnet-core-6-web-api-best-practices)
 
 ## References
 

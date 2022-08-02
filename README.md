@@ -97,6 +97,7 @@ Below are a selection of links I referenced when building this course.
 - [Response Caching in ASP.NET Core](https://code-maze.com/aspnetcore-response-caching/)
 - [xunit Configuration Files](https://xunit.net/docs/configuration-files)
 - [Testing authorization scenarios in ASP.NET Core Web APIs](https://medium.com/asos-techblog/testing-authorization-scenarios-in-asp-net-core-web-api-484bc95d5f6f)
+- [Implement authorization for Swagger in ASP.NET Core 6](https://www.infoworld.com/article/3650668/implement-authorization-for-swagger-in-aspnet-core-6.html)
 
 ### GitHub Repos
 

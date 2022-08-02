@@ -95,6 +95,8 @@ Below are a selection of links I referenced when building this course.
 - [Writing decoupled code with MediatR: The Mediator Pattern](https://samwalpole.com/writing-decoupled-code-with-mediatr-the-mediator-pattern)
 - [Middleware for Response Caching in .NET Core Web APIs](https://thecodeblogger.com/2021/06/06/middleware-for-response-caching-in-net-core-web-apis/)
 - [Response Caching in ASP.NET Core](https://code-maze.com/aspnetcore-response-caching/)
+- [xunit Configuration Files](https://xunit.net/docs/configuration-files)
+- [Testing authorization scenarios in ASP.NET Core Web APIs](https://medium.com/asos-techblog/testing-authorization-scenarios-in-asp-net-core-web-api-484bc95d5f6f)
 
 ### GitHub Repos
 

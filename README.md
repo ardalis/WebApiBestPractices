@@ -1,7 +1,11 @@
-# ASP.NET Core 6 Web Api Best Practices
+# ASP.NET Core Web Api Best Practices
 
 Resources related to my Pluralsight course.
 
+Latest version:
+[Watch the course: ASP.NET Core Web API: Best Practices](https://www.pluralsight.com/courses/aspdotnet-core-6-web-api-best-practices)
+
+Version 6:
 [Watch the course: ASP.NET Core 6 Web API: Best Practices](https://www.pluralsight.com/courses/aspdotnet-core-6-web-api-best-practices)
 
 ## References

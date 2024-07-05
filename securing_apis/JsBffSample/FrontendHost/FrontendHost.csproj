@@ -1,14 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Duende.BFF" Version="1.1.0" />
-    <PackageReference Include="Duende.BFF.Yarp" Version="1.1.0" />
+    <PackageReference Include="Duende.BFF" />
+    <PackageReference Include="Duende.BFF.Yarp" />
     
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
   </ItemGroup>
 
 </Project>

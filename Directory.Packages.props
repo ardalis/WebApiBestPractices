@@ -14,8 +14,11 @@
     <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0" />
     <PackageVersion Include="Autofac" Version="8.0.0" />
     <PackageVersion Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Automapper" Version="12.0.1" />
     <PackageVersion Include="Automapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
+    <PackageVersion Include="Duende.BFF" Version="1.1.0" />
+    <PackageVersion Include="Duende.BFF.Yarp" Version="1.1.0" />
     <PackageVersion Include="FastEndpoints" Version="5.27.0" />
     <PackageVersion Include="FastEndpoints.ApiExplorer" Version="2.2.0" />
     <PackageVersion Include="FastEndpoints.Swagger" Version="5.23.0" />
@@ -23,11 +26,14 @@
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="MailKit" Version="4.4.0" />
     <PackageVersion Include="MediatR" Version="12.3.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.6" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
     <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.6" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.2" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6" />

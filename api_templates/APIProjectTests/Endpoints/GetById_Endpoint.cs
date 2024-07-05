@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using ApiBestPractices.Endpoints.Endpoints.Authors;
 using BackendData;
 using BackendData.DataAccess;

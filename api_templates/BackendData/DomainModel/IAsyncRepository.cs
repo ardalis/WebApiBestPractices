@@ -9,7 +9,7 @@ namespace BackendData;
 /// <typeparam name="T"></typeparam>
 public interface IAsyncRepository<T> where T : BaseEntity
 {
-  Task<T> GetByIdAsync(int id, CancellationToken cancellationToken);
+  Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken);
 
   Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken);
 

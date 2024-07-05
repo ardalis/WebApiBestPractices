@@ -19,7 +19,7 @@ builder.Services.AddMvcCore(); // pull in default model binders
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddEndpointsMetadataProviderApiExplorer(); 
+// builder.Services.AddEndpointsMetadataProviderApiExplorer(); only needed in NET6
 builder.Services.AddSwaggerGen(config => config.EnableAnnotations());
 
 builder.Services.AddAuthentication();

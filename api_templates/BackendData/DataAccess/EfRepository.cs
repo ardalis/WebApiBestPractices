@@ -17,7 +17,7 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
     _dbContext = dbContext;
   }
 
-  public virtual async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken)
+  public virtual async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken)
   {
     return await _dbContext.Set<T>().FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
   }

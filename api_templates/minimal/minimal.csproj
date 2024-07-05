@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.3" />
-		<PackageReference Include="MinimalApi.Endpoint" Version="1.1.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
-		<PackageReference Include="MinimalApis.Extensions" Version="0.7.0-pre.20220528.28" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+		<PackageReference Include="Microsoft.Data.Sqlite.Core" />
+		<PackageReference Include="MinimalApi.Endpoint" />
+		<PackageReference Include="Swashbuckle.AspNetCore" />
+		<!--<PackageReference Include="MinimalApis.Extensions" Version="0.7.0-pre.20220528.28" />-->
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
 	</ItemGroup>
 
 	<ItemGroup>

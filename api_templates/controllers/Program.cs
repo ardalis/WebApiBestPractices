@@ -32,7 +32,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // add application services
 builder.Services.AddScoped<IAuthorService, AuthorService>();
-builder.Services.AddMediatR(typeof(IAuthorService));
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(IAuthorService).Assembly));
 
 // configure autofac - necessary for MediatR property on base controller class example
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
